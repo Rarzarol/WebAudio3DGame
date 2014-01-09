@@ -1,0 +1,25 @@
+#myCanvas{
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width:auto;
+    border-color: black;
+    border-style: solid;
+    border-size: 11px;
+}
+
+#controls, #controlrow{
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width:800px;
+}
+
+body {
+	margin: 0px;
+	padding: 0px;
+}
