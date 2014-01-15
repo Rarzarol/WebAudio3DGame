@@ -1,7 +1,7 @@
 //Spieler/Betrachter der Szene.
 function PlayerNode(x,y,z){
 	this.position    = new Point(x,y,z);
-	var or  		 = new Vector(1,0,0);
+	var or  		 = new Vector(1,0,0); //hier abgreifen
 	this.orientation = or.normalize();
 	this.degrees 	 = 0;
 
@@ -32,7 +32,11 @@ function PlayerNode(x,y,z){
 		context.listener.setPosition(this.position.getX(),
 									 this.position.getY(),
 								     this.position.getZ());
-	}
+									 
+									 
+		var previousPosition = new Vector2(this.position.getX(),this.position.getY());
+									 
+
 
 	//CCW rotation with positive degree value
 	//Charakter looking up or down, rotation on an arbitrary axis defined by current orientation vector

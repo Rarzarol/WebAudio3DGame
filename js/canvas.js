@@ -102,6 +102,7 @@ MyCanvas.refreshNodes = function(){
     var allPlayerNodes = world.getPlayerNodes();
     var allAudioNodes  = world.getAudioNodes();
 
+	
     allPlayerNodes.forEach(function(entry){
     	recta = new MyRect(entry);
         allRects.push(recta);
