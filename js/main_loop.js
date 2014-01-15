@@ -6,11 +6,11 @@ world.createLocalPlayer(1,0,1);
 
 var audio1 = new AudioNode(50,0,100,1,0,1);
 world.addAudioNode(audio1);
-audio1.startAsSample('/sounds/test.wav');
+audio1.startAsSample('/sounds/test.ogg');
 
 var audio2 = new AudioNode(22,0,3,1,0,1);
 world.addAudioNode(audio2);
-audio2.startAsSample('/sounds/test2.wav');
+audio2.startAsSample('/sounds/test2.ogg');
 
 //Debug init
 
