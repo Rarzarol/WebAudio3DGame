@@ -42,7 +42,7 @@ function AudioNode(x,y,z,orx,ory,orz){
 	this.rotate = function(degrees){
 		var vector = this.orientation.rotateXZ(degrees);
 		this.updateDegrees(degrees);
-		this.setOrientation(this.orientation);
+		this.setOrientation(vector);
 	}
 
 	this.updateDegrees = function(degree){
