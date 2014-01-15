@@ -32,12 +32,8 @@ function PlayerNode(x,y,z){
 		this.position = this.position.addVectorToPoint(vector);
 		context.listener.setPosition(this.position.getX(),
 									 this.position.getY(),
-								     this.position.getZ());
-									 
-									 
-		var previousPosition = new Vector2(this.position.getX(),this.position.getY());
-									 
-
+								     this.position.getZ());								 							 
+	}
 
 	//CCW rotation with positive degree value
 	//Charakter looking up or down, rotation on an arbitrary axis defined by current orientation vector
@@ -132,7 +128,5 @@ function PlayerNode(x,y,z){
 		this.orientation 		  = normalizedFrontVector;
 		GlobalAudio.setOrientation(normalizedFrontVector, normalizedUpVector);
 	}
-
-this.changeOrientation(this.orientation);
 
 }
