@@ -16,15 +16,16 @@ function PlayerNode(x,y,z){
 	var YLOCK   = 20;
 
 	//Position des Hoerers wird festgelegt
-	this.changePosition = function(vector){
-		context.listener.setPosition(vector.getX(),vector.getY(),vector.getZ());
-		this.position = vector;
+	this.changePosition = function(point){
+		context.listener.setPosition(point.getX(),point.getY(),point.getZ());
+		this.position = point;
 	}
 
+	//Moves Player on the XZ plane only
 	this.moveInDirection = function(incr){
-		this.position = this.position.addVectorToPoint(this.orientation.scale(incr));
-		this.changePosition(this.position);
-		
+		var newPosition = this.position.addVectorToPoint(this.orientation.scale(incr));
+		var newPositionXZ = new Point(newPosition.getX(),0,newPosition.getZ());
+		this.changePosition(newPositionXZ);
 	}
 
 	this.moveByVector = function(vector){

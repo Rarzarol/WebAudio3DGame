@@ -163,5 +163,12 @@ function MyRect(node){
 						  this.yPos+world.localPlayer.orientation.getX()*16);
 			canctx.stroke();
 		}
+		else if(node instanceof AudioNode){
+			canctx.beginPath();
+			canctx.moveTo(this.xPos,this.yPos);
+			canctx.lineTo(this.xPos+node.orientation.getX()*16, 
+						  this.yPos+node.orientation.getZ()*16);
+			canctx.stroke();
+		}
 	}
 }
