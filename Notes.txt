@@ -1,0 +1,44 @@
+Weglaufen! Vor dem BÖSEN Monster
+
+verteidigen mit Objekt? LASERSCHWERT
+
+Türen gehen auf/zu
+
+brainstormen
+
+Flucht? Dann wir bewegliche "Gegner"
+
+sie müssen sich auf paths bewegen, mit variabler gescwindigkeit
+
+oder to player position gehen mit vektor, dann 
+
+
+AI vom gegner, kollision anticipaten (sichtrays) wenn direkter weg versperrt dann weg variieren und immer wieder schauen, ob direkter weg zum player verbaut ist.
+
+
+Was als Gegenstand, Waffe nehmen? Kettensäge
+
+"Blind" einbinden in Erzählung? man ist Abgestürzt und kann nichts mehr sehen.
+
+Intro: Atmosphere on Plane, paople chattering etc., engine sounds Mayday mayday!!!1ELF
+
+then: CHAOS, stürzt ab...
+
+
+man erwacht in der nacht eim Wrack, hört flammen, biegendes Stahl ABER auch nachtgeräusche
+
+Erstmal on Tracks, nur geradeaus gehen möglich... Wie signalisieren, dass man vorwärts geht? Allee an Sounds
+
+Wie die Umgebung lebendiger machen? Selbstgespräche des Charakters, wie sich alles anfühlt (gute Stimme suchen)
+
+Spieler führen, später weniger.
+
+Charakter kennt Umgebung am Anfang, kann sich an Landmarks orientieren
+(Kirchenglocken) zwingen Spieler, sich auf gerader Linie zu bewegen
+
+Irgendwann hört orientation sound auf
+
+lost in the wild
+
+wie signalisieren, dass man sich dreht? evtl. corsshair und so manuell, ebenso wie kompass
+dann creepy sounds
