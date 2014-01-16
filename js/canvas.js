@@ -2,19 +2,28 @@ var canvas = document.getElementById('myCanvas');
 var canctx = canvas.getContext('2d');
 var allRects = new Array();
 var textpos  = 20;
+var savedText = "Pick a Node to change Params";
 
 function MyCanvas(){
 }
 
 MyCanvas.writeMessage = function(message) {
+	var text;
 	//canctx.clearRect(0, 0, canvas.width, canvas.height);
+	if(message === undefined) {
+		text = savedText;
+	}
+	else {
+		text = message;
+		savedText = message;
+	}
 	canctx.font = '18pt Calibri';
 	canctx.fillStyle = 'black';
-	canctx.fillText(message, 10, textpos);
-	textpos += 25;
+	canctx.fillText(text, 10, textpos);
+	//textpos += 25;
 }
 
-MyCanvas.resetText = function(){
+MyCanvas.resetText = function() {
 	textpos = 20;
 }
 
@@ -26,7 +35,7 @@ MyCanvas.getMousePos = function(evt) {
 	};
 }
 
-MyCanvas.destroyControlSet = function(){
+MyCanvas.destroyControlSet = function() {
 	var controlSection    = document.getElementById('controls');
 	while (controlSection.firstChild) {
     controlSection.removeChild(controlSection.firstChild);
@@ -34,7 +43,7 @@ MyCanvas.destroyControlSet = function(){
 
 }
 
-MyCanvas.createControlSet = function(node){
+MyCanvas.createControlSet = function(node) {
 	var controlSection    = document.getElementById('controls');
 	//New sub div of control Section - here be all sliders
 	var newdiv			  = document.createElement('div');
@@ -98,7 +107,7 @@ MyCanvas.createControlSet = function(node){
 	controlSection.appendChild(newdiv);
 }
 
-MyCanvas.refreshNodes = function(){
+MyCanvas.refreshNodes = function() {
     var allPlayerNodes = world.getPlayerNodes();
     var allAudioNodes  = world.getAudioNodes();
 
@@ -113,7 +122,7 @@ MyCanvas.refreshNodes = function(){
     })
 }
 
-MyCanvas.drawWorld = function(world){
+MyCanvas.drawWorld = function(world) {
 	canctx.save();
 	canctx.clearRect(0, 0, canvas.width, canvas.height);
 	//0,0 Shall be in the middle, therefore translatie coordinate system accordingly
@@ -123,12 +132,12 @@ MyCanvas.drawWorld = function(world){
 		entry.update();
 		entry.draw();
 	});
-
 	canctx.restore();
+	MyCanvas.writeMessage();
 }
 
 //Class describing Rectangle on Canvas
-function MyRect(node){
+function MyRect(node) {
 	
 	this.node 	  = node;
 	this.width	  = 8;
