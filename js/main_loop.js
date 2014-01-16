@@ -12,6 +12,24 @@ var audio2 = new AudioNode(22,0,3,1,0,1);
 world.addAudioNode(audio2);
 audio2.startAsSample('/sounds/test2.ogg');
 
+
+var audio3 = new AudioNode(-300,0,-270,-1,0,-1);
+world.addAudioNode(audio3);
+audio3.startAsSample('/sounds/waterfall2.ogg');
+
+var audio4 = new AudioNode(300,0,-270,1,0,-1);
+world.addAudioNode(audio4);
+audio4.startAsSample('/sounds/birds1.ogg');
+
+var audio5 = new AudioNode(-300,0,270,-1,0,1);
+world.addAudioNode(audio5);
+audio5.startAsSample('/sounds/birds2.ogg');
+
+var audio6 = new AudioNode(300,0,270,1,0,1);
+world.addAudioNode(audio6);
+audio6.startAsSample('/sounds/birds3.ogg');
+
+
 //Debug init
 
 MyCanvas.refreshNodes();
