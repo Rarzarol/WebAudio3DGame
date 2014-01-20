@@ -61,6 +61,18 @@ function AudioNode(x,y,z,orx,ory,orz){
 		this.panner.coneInnerAngle = innerDeg;
 		this.panner.coneOuterAngle = outerDeg;
 	}
+
+	this.setRefDist = function(dist){
+		this.panner.refDistance = dist;
+	}
+
+	this.setMaxDist = function(dist){
+		this.panner.maxDistance = dist;
+	}
+
+	this.setRolloff = function(value){
+		this.panner.rolloffFactor = value;
+	}
 	
 	this.setInnerConeGain= function(value){
 		this.panner.coneGain = value;

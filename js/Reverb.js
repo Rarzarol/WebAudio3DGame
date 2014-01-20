@@ -1,10 +1,13 @@
-function Reverb(file,object){
-
+function Reverb(file,object,volume){
+	this.volume = volume;
 	this.file = file;
 	this.object = object;
 	this.convolver = context.createConvolver();
 	this.object.connect(this.convolver);
-	this.convolver.connect(context.destination);
+	this.gainnode = context.createGain();
+	this.gainnode.gain.setValueAtTime(this.volume,context.currentTime);
+	this.convolver.connect(this.gainnode);
+	this.gainnode.connect(context.destination);
 
 	this.loadIR = function(string){
 		this.bufferLoader = new BufferLoader(context,[string],this.finishedLoading.bind(this));

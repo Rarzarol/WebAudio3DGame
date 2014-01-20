@@ -233,6 +233,10 @@ function Vector(x,y,z){
 		return this.rotate(deg,"xz");
 	};
 
+	this.projectXZ = function(){
+		return new Vector(this.tuple[0],0,this.tuple[2]);
+	}
+
 	this.rotate = function(deg,plane){
 		if(deg === 0) {
 			return this;

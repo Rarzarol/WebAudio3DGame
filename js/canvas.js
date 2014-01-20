@@ -46,8 +46,8 @@ MyCanvas.destroyControlSet = function() {
 MyCanvas.createControlSet = function(node) {
 	var controlSection    = document.getElementById('controls');
 	//New sub div of control Section - here be all sliders
-	var controlrow1			  = document.createElement('div');
-	controlrow1.id 			  = 'controlrow1';
+	var controlrow1			  	= document.createElement('div');
+	controlrow1.id 			  	= 'controlrow1';
 	//Creating sliders for manipulating params
 	var nodeVolumeText        	= document.createTextNode('Node '+node.id+' Volume');
 	var nodeVolumeSlider      	= document.createElement('input');
@@ -59,8 +59,8 @@ MyCanvas.createControlSet = function(node) {
 	var nodeSampleTextInput   	= document.createElement('input');
 	var nodeSampleButton	  	= document.createElement('button');
 
-	var controlrow2			  = document.createElement('div');
-	controlrow2.id 			  = 'controlrow2';
+	var controlrow2			  	= document.createElement('div');
+	controlrow2.id 			  	= 'controlrow2';
 	var nodeConeAngleText		= document.createTextNode('Cone Angles:');
 	var nodeInnerConeAngleInput = document.createElement('input');
 	var nodeOuterConeAngleInput = document.createElement('input');
@@ -69,6 +69,81 @@ MyCanvas.createControlSet = function(node) {
 	var nodeConeGainText		= document.createTextNode('Cone Gains:');
 	var nodeInnerConeGainInput 	= document.createElement('input');
 	var nodeOuterConeGainInput 	= document.createElement('input');
+
+	var controlrow3			 	= document.createElement('div');
+	controlrow3.id 			  	= 'controlrow3';
+
+	var nodeRefDistanceText		= document.createTextNode('RefDist:');
+	var nodeRefDistanceSlider 	= document.createElement('input');
+	var nodeMaxDistanceText		= document.createTextNode('MaxDist:');
+	var nodeMaxDistanceSlider 	= document.createElement('input');
+	var nodeRolloffText 		= document.createTextNode('Rolloff:');
+	var nodeRolloffSlider 		= document.createElement('input');
+
+	var distModelSelect = document.createElement('select');
+
+///////////////////////////////////////////////////////////////////////////////////
+
+	distModelSelect.onchange = function() {
+
+		if (this.selectedIndex = 0) {
+			node.panner.distanceModel = node.panner.LINEAR_DISTANCE;
+		}
+		else if (this.selectedIndex = 1) {
+			node.panner.distanceModel = node.panner.INVERSE_DISTANCE;
+		}
+		else {
+			node.panner.distanceModel = node.panner.EXPONENTIAL_DISTANCE;
+		}
+	}
+
+	var opt1 = document.createElement("option"); 
+	opt1.text = 'linear';
+	distModelSelect.options.add(opt1);
+
+	var opt2 = document.createElement("option"); 
+	opt2.text = 'inverse';
+	distModelSelect.options.add(opt2);
+
+	var opt3 = document.createElement("option"); 
+	opt3.text = 'exponential';
+	distModelSelect.options.add(opt3);
+
+///////////////////////////////////////////////////////////////////////////////////
+
+	nodeRefDistanceSlider.type = 'range';
+	nodeRefDistanceSlider.id = node.id;
+	nodeRefDistanceSlider.value = node.panner.refDistance;
+	nodeRefDistanceSlider.max = 10;
+	nodeRefDistanceSlider.min = 0;
+	nodeRefDistanceSlider.step = 0.001;
+	nodeRefDistanceSlider.onchange = function changeHandler(){
+		node.setRefDist(parseInt(this.value));
+	};
+
+///////////////////////////////////////////////////////////////////////////////////
+
+	nodeMaxDistanceSlider.type 	= 'range';
+	nodeMaxDistanceSlider.id 	= node.id;
+	nodeMaxDistanceSlider.value = node.panner.maxDistance;
+	nodeMaxDistanceSlider.max 	= 10000;
+	nodeMaxDistanceSlider.min 	= 10;
+	nodeMaxDistanceSlider.step 	= 1;
+	nodeMaxDistanceSlider.onchange = function changeHandler(){
+		node.setMaxDist(parseInt(this.value));
+	};
+
+///////////////////////////////////////////////////////////////////////////////////
+
+	nodeRolloffSlider.type	= 'range';
+	nodeRolloffSlider.id 	= node.id;
+	nodeRolloffSlider.value = node.panner.rolloffFactor;
+	nodeRolloffSlider.max 	= 5;
+	nodeRolloffSlider.min 	= 1;
+	nodeRolloffSlider.step 	= 0.001;
+	nodeRolloffSlider.onchange = function changeHandler(){
+		node.setRolloff(parseInt(this.value));
+	};
 
 ///////////////////////////////////////////////////////////////////////////////////
 
@@ -143,8 +218,8 @@ MyCanvas.createControlSet = function(node) {
 	nodeInnerConeGainInput.type  = 'range';
 	nodeInnerConeGainInput.id	 = node.id;
 	nodeInnerConeGainInput.value = node.panner.coneGain;
-	nodeInnerConeGainInput.max   = 3;
-	nodeInnerConeGainInput.step  = 0.01;
+	nodeInnerConeGainInput.max   = 5;
+	nodeInnerConeGainInput.step  = 0.001;
     nodeInnerConeGainInput.onchange = function changeHandler() {
     	node.setInnerConeGain(parseInt(this.value));
     };
@@ -154,7 +229,7 @@ MyCanvas.createControlSet = function(node) {
 	nodeOuterConeGainInput.id	 = node.id;
 	nodeOuterConeGainInput.value = node.panner.coneOuterGain;
 	nodeOuterConeGainInput.max   = 3;
-	nodeOuterConeGainInput.step  = 0.01;
+	nodeOuterConeGainInput.step  = 0.001;
     nodeOuterConeGainInput.onchange = function changeHandler() {
     	node.setOuterConeGain(parseInt(this.value));
     };
@@ -176,15 +251,23 @@ MyCanvas.createControlSet = function(node) {
 	controlrow2.appendChild(nodeConeGainText);
 	controlrow2.appendChild(nodeInnerConeGainInput);
 	controlrow2.appendChild(nodeOuterConeGainInput);
+
+	controlrow3.appendChild(nodeRefDistanceText);
+	controlrow3.appendChild(nodeRefDistanceSlider);
+	controlrow3.appendChild(nodeRolloffText);
+	controlrow3.appendChild(nodeRolloffSlider);
+	controlrow3.appendChild(nodeMaxDistanceText);
+	controlrow3.appendChild(nodeMaxDistanceSlider);
+	controlrow3.appendChild(distModelSelect);
 	
 	controlSection.appendChild(controlrow1);
 	controlSection.appendChild(controlrow2);
+	controlSection.appendChild(controlrow3);
 }
 
 MyCanvas.refreshNodes = function() {
     var allPlayerNodes = world.getPlayerNodes();
     var allAudioNodes  = world.getAudioNodes();
-
 	
     allPlayerNodes.forEach(function(entry){
     	recta = new displayRect(entry);
@@ -222,8 +305,6 @@ function displayRect(node) {
 	this.update = function(){
 		this.xPos = this.node.position.getX();
 		this.yPos = this.node.position.getZ();
-		//Insert code for cones
-
 	}
 
 	this.draw = function(){
@@ -256,39 +337,37 @@ function displayRect(node) {
 						  this.yPos+this.node.orientation.getZ()*16);
 			canctx.stroke();
 
-			//Draw Audio Cone			
-			var leftOuterConeVector = this.node.orientation.rotateXZ(this.node.panner.coneOuterAngle/2);
-			var rightOuterConeVector = leftOuterConeVector.rotateXZ(this.node.panner.coneOuterAngle*-1);
+			//Draw Audio Cone
+			var coneInnerAngle = MathHelper.degToRad(node.panner.coneInnerAngle);
+
+			var coneOuterAngle = MathHelper.degToRad(node.panner.coneOuterAngle);
+
+			var xAxis = new Vector(1,0,0);
 
 			var leftInnerConeVector = this.node.orientation.rotateXZ(this.node.panner.coneInnerAngle/2);
-			var rightInnerConeVector = leftInnerConeVector.rotateXZ(this.node.panner.coneInnerAngle*-1);
+			var leftOuterConeVector = this.node.orientation.rotateXZ(this.node.panner.coneOuterAngle/2);
 
-			var innerAngle = MathHelper.radToDeg(leftInnerConeVector.getAngle(rightInnerConeVector));
-			var outerAngle = MathHelper.radToDeg(leftOuterConeVector.getAngle(rightOuterConeVector));
-			var innerScaleFactor = 20*innerAngle;
-			var outerScaleFactor = 20*outerAngle;
+			var innerStartAngle = Math.atan2(leftInnerConeVector.getZ(),leftInnerConeVector.getX());
+			var outerStartAngle = Math.atan2(leftOuterConeVector.getZ(),leftOuterConeVector.getX());
+
 			canctx.save();
-				//clip radial area for cone display
-				canctx.beginPath();
-    			canctx.arc(this.xPos, this.yPos, 120, 0, Math.PI*2, false);
-    			canctx.clip();
+			canctx.translate(this.xPos,this.yPos);
+			//canctx.rotate(rotation);
+			canctx.beginPath();
+			canctx.moveTo(0,0);
+			canctx.fillStyle = 'rgba(248, 181, 255, 0.5)';
+			canctx.arc(0, 0, 120, innerStartAngle, innerStartAngle+coneInnerAngle, false);
+			canctx.fill();
+			canctx.restore();
 
-				canctx.beginPath();
-				canctx.moveTo(this.xPos,this.yPos);
-				//pink color for outer Cone Area
-				canctx.fillStyle = 'rgba(248, 181, 255, 0.3)';
-					canctx.lineTo(this.xPos+leftOuterConeVector.getX()*innerScaleFactor,this.yPos+leftOuterConeVector.getZ()*innerScaleFactor);
-					canctx.lineTo(this.xPos+rightOuterConeVector.getX()*innerScaleFactor,this.yPos+rightOuterConeVector.getZ()*innerScaleFactor);
-					canctx.lineTo(this.xPos,this.yPos);
-				canctx.fill();
-
-				canctx.beginPath();
-				canctx.moveTo(this.xPos,this.yPos);
-				canctx.fillStyle = 'rgba(233, 36, 255, 0.7)';
-					canctx.lineTo(this.xPos+leftInnerConeVector.getX()*outerScaleFactor,this.yPos+leftInnerConeVector.getZ()*outerScaleFactor);
-					canctx.lineTo(this.xPos+rightInnerConeVector.getX()*outerScaleFactor,this.yPos+rightInnerConeVector.getZ()*outerScaleFactor);
-					canctx.lineTo(this.xPos,this.yPos);
-				canctx.fill();
+			canctx.save();
+			canctx.translate(this.xPos,this.yPos);
+			//canctx.rotate(rotation);
+			canctx.beginPath();
+			canctx.moveTo(0,0);
+			canctx.fillStyle = 'rgba(233, 36, 255, 0.2)';
+			canctx.arc(0, 0, 120, outerStartAngle, outerStartAngle+coneOuterAngle, false);
+			canctx.fill();
 			canctx.restore();
 		}
 	}
