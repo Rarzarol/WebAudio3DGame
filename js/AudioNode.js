@@ -57,6 +57,19 @@ function AudioNode(x,y,z,orx,ory,orz){
 	}
 	}
 
+	this.setConeAngle = function(innerDeg,outerDeg){
+		this.panner.coneInnerAngle = innerDeg;
+		this.panner.coneOuterAngle = outerDeg;
+	}
+	
+	this.setInnerConeGain= function(value){
+		this.panner.coneGain = value;
+	}
+	
+	this.setOuterConeGain= function(value){
+		this.panner.coneOuterGain = value;
+	}
+
 	this.stopSound = function(){
 		if(this.isPlaying) this.source.stop(context.currentTime);
 	}

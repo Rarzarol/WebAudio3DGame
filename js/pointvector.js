@@ -168,7 +168,7 @@ function Vector(x,y,z){
 		
 	}
 
-	//Returns angle in radians TODO
+	//Returns angle in radians
 	this.getAngle = function(vector){
 		var dividend = this.dotProduct(vector);
 		var divisor  = this.vectorLength()*vector.vectorLength();
