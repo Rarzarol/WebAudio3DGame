@@ -34,15 +34,16 @@ function World(worldSize){
 		return this.audioNodes;
 	}
 	
-	this.isCollided = function(player){
-		this.rectangles.forEach(function(rectangle){
-			if(rectangle.isContainingPlayer(player.position)){
+	this.willCollide = function(point){
+		for (var i = this.rectangles.length - 1; i >= 0; i--) {
+			if(this.rectangles[i].isContainingPoint(point)){
+				console.log("rectangle found that intersects with player");
 				return true;
-				
-			};
-			return false;
-			
-		})
+			}
+			else{
+				return false;
+			}
+		};
 	}	
 	
 }

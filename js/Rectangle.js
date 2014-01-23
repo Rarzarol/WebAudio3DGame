@@ -54,15 +54,14 @@
 	};
 	
 	
-	this.isContainingPlayer = function (position){
-		if (position.getX() >= this.x && position.getX() <= this.x + this.width &&
-			position.getZ() >= this.y && position.getZ() <= this.y + this.height){
-				console.log("Collision Detected");
+	this.isContainingPoint = function (point){
+		if (point.getX() >= this.x && point.getX() <= this.x + this.width &&
+			point.getZ() >= this.y && point.getZ() <= this.y + this.height){
 				return true;
-				}
+		}
 		else{
-				return false;
-				}
+			return false;
+		}
 	};
 			
 	
