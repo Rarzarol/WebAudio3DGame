@@ -32,3 +32,10 @@ Debug.chooseNodeByCoords = function(x,y){
 		}
 	}
 }
+
+Debug.saveJSON = function(){
+
+	var JSONstring = JSON.stringify(world);
+	console.log(JSONstring);
+
+}

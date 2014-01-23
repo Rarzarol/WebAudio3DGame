@@ -39,29 +39,3 @@ MyCanvas.refreshNodes();
 /*var audio3 = new AudioNode(-111,0,-122);
 audio3.startAsSample('/sounds/test3.wav');
 world.addAudioNode(audio3);*/
-
-/*//Display Loop
-function updateDisplay(){
-
-}
-
-//MAIN LOOP
-var mainloop = function() {
-        updateDisplay();
-        //drawGame();
-    };
-
-    var animFrame = window.requestAnimationFrame ||
-            window.webkitRequestAnimationFrame ||
-            window.mozRequestAnimationFrame    ||
-            window.oRequestAnimationFrame      ||
-            window.msRequestAnimationFrame     ||
-            null ;
-
-    var recursiveAnim = function() {
-        mainloop();
-        animFrame( recursiveAnim );
-    };
-
-    // start the mainloop
-    animFrame( recursiveAnim );*/
