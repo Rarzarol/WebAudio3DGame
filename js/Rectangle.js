@@ -57,11 +57,10 @@
 	this.isContainingPlayer = function (position){
 		if (position.getX() >= this.x && position.getX() <= this.x + this.width &&
 			position.getZ() >= this.y && position.getZ() <= this.y + this.height){
-				alert("is containing = true");
+				console.log("Collision Detected");
 				return true;
 				}
 		else{
-			//	alert("is containing = false");
 				return false;
 				}
 	};

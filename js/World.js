@@ -36,13 +36,10 @@ function World(worldSize){
 	
 	this.isCollided = function(player){
 		this.rectangles.forEach(function(rectangle){
-		//	alert("Collision Check");
 			if(rectangle.isContainingPlayer(player.position)){
-				alert("player isCollided = true");
 				return true;
 				
 			};
-			//alert("player isCollided = false");
 			return false;
 			
 		})
