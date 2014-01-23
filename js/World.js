@@ -7,7 +7,8 @@ function World(worldSize){
 	this.localPlayer;
 	this.playerNodes = new Array();
 	this.audioNodes  = new Array();
-
+	this.rectangles = new Array();
+	
 	this.addAudioNode = function(audioNode){
 		this.audioNodes.push(audioNode);
 	}
@@ -15,6 +16,10 @@ function World(worldSize){
 	this.createLocalPlayer = function(x,y,z){
 		this.localPlayer = new PlayerNode(x,y,z);
 		this.playerNodes.push(this.localPlayer);
+	}
+	
+	this.createRectangle = function(x,y, w,h){
+		this.rectangles.push(new Rectangle(x,y, w,h));
 	}
 
 	this.drawState = function(){
@@ -28,5 +33,19 @@ function World(worldSize){
 	this.getAudioNodes = function(){
 		return this.audioNodes;
 	}
+	
+	this.isCollided = function(player){
+		this.rectangles.forEach(function(rectangle){
+		//	alert("Collision Check");
+			if(rectangle.isContainingPlayer(player.position)){
+				alert("player isCollided = true");
+				return true;
+				
+			};
+			//alert("player isCollided = false");
+			return false;
+			
+		})
+	}	
 	
 }

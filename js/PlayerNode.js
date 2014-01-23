@@ -23,9 +23,14 @@ function PlayerNode(x,y,z){
 
 	//Moves Player on the XZ plane only
 	this.moveInDirection = function(incr){
-		var newPosition = this.position.addVectorToPoint(this.orientation.scale(incr));
-		var newPositionXZ = new Point(newPosition.getX(),0,newPosition.getZ());
-		this.changePosition(newPositionXZ);
+		if(!world.isCollided(this)){
+			var newPosition = this.position.addVectorToPoint(this.orientation.scale(incr));
+			var newPositionXZ = new Point(newPosition.getX(),0,newPosition.getZ());
+			this.changePosition(newPositionXZ);
+		}
+		else{
+		alert("collision detected");
+		}
 	}
 
 	this.moveByVector = function(vector){

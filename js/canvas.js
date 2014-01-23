@@ -289,6 +289,14 @@ MyCanvas.drawWorld = function(world) {
 		entry.update();
 		entry.draw();
 	});
+	
+	//Boundarys and Rectangles
+	var rectangles = world.rectangles;
+	
+	 for(var i=0; i<rectangles.length; i++){
+		 rectangles[i].drawRECT(canctx);
+	 }
+	
 	canctx.restore();
 	MyCanvas.writeMessage();
 }

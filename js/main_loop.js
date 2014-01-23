@@ -10,6 +10,9 @@ var audio1 = new AudioNode(50,0,100,1,0,1);
 world.addAudioNode(audio1);
 audio1.startAsSample('/sounds/test.ogg');
 
+//Test Boden
+world.createRectangle(10,0,50,50);
+
 /*var audio2 = new AudioNode(22,0,3,1,0,1);
 world.addAudioNode(audio2);
 audio2.startAsSample('/sounds/test2.ogg');
