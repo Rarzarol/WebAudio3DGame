@@ -22,8 +22,6 @@
 	this.y = y;
 	this.width = w;
 	this.height = h;
-	
-
 
 	//check if in boundarys
 	this.Contains = function(x,y)

@@ -7,9 +7,6 @@ window.addEventListener('keydown', function (e) {
     if (e.keyCode === 87) { input.wDown = true; }
     //s
     if (e.keyCode === 83) { input.sDown = true; }
-
-    //TODO: woanders hin
-    MyCanvas.resetText();
 }, false);
 
 window.addEventListener('keyup', function (e) {
@@ -29,6 +26,7 @@ window.addEventListener('keyup', function (e) {
 
 canvas.addEventListener('mousedown', function(evt) {
     mousePos = MyCanvas.getMousePos(evt);
+    MyCanvas.resetText();
     Debug.chooseNodeByCoords(mousePos.x,mousePos.y);
 
 },false);

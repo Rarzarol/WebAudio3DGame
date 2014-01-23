@@ -26,7 +26,7 @@ function Input(){
 		this.lastXdelta = this.mouseXdelta;
 		this.lastYdelta = this.mouseYdelta;
 		var deltas = [this.mouseXdelta,this.mouseYdelta];
-		console.log("Deltas: "+this.mouseXdelta+"|"+this.mouseYdelta);
+		//console.log("Deltas: "+this.mouseXdelta+"|"+this.mouseYdelta);
 		return deltas;
 	}
 

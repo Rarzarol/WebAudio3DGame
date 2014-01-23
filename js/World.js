@@ -8,9 +8,12 @@ function World(worldSize){
 	this.playerNodes = new Array();
 	this.audioNodes  = new Array();
 	this.rectangles = new Array();
+	this.movers = new Array();
 	
-	this.addAudioNode = function(audioNode){
-		this.audioNodes.push(audioNode);
+	this.createMover = function(audioNode){}
+
+	this.createAudioNode = function(x,y,z,orx,ory,orz,filename){
+		this.audioNodes.push(new AudioNode(x,y,z,orx,ory,orz,filename));
 	}
 
 	this.createLocalPlayer = function(x,y,z){
@@ -18,8 +21,8 @@ function World(worldSize){
 		this.playerNodes.push(this.localPlayer);
 	}
 	
-	this.createRectangle = function(x,y, w,h){
-		this.rectangles.push(new Rectangle(x,y, w,h));
+	this.createRectangle = function(x,y,w,h){
+		this.rectangles.push(new Rectangle(x,y,w,h));
 	}
 
 	this.drawState = function(){
@@ -35,15 +38,14 @@ function World(worldSize){
 	}
 	
 	this.willCollide = function(point){
+		var collisionCounter = 0;
 		for (var i = this.rectangles.length - 1; i >= 0; i--) {
 			if(this.rectangles[i].isContainingPoint(point)){
 				console.log("rectangle found that intersects with player");
-				return true;
-			}
-			else{
-				return false;
+				collisionCounter++;
 			}
 		};
-	}	
-	
+		if(collisionCounter > 0) { return true; }
+		else{ return false; };
+	}
 }

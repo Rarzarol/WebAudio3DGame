@@ -1,4 +1,4 @@
-function AudioNode(x,y,z,orx,ory,orz){
+function AudioNode(x,y,z,orx,ory,orz,filename){
 	this.position = new Point(x,y,z);
 	this.orientation = new Vector(orx,ory,orz);
 	this.bufferLoader;
@@ -92,4 +92,5 @@ function AudioNode(x,y,z,orx,ory,orz){
 
 	this.setOrientation(this.orientation);
 	this.panner.setPosition(x,y,z);
+	this.startAsSample(filename);
 }
