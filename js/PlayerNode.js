@@ -109,11 +109,11 @@ function PlayerNode(x,y,z){
 		if(this.degrees + degree >= 360){
 			var diff = (this.degrees + degree) % 360;
 			this.degrees = diff;
-			console.log("Einmal rum! Plus neuer Wert" + this.degrees);
+			//console.log("Einmal rum! Plus neuer Wert" + this.degrees);
 		}
 		else {
 			this.degrees += degree;
-			console.log("Akt. Drehung:"+this.degrees);
+			//console.log("Akt. Drehung:"+this.degrees);
 		};
 	}
 
@@ -125,7 +125,7 @@ function PlayerNode(x,y,z){
 
 	this.setOrientationVectors = function(vector){
 		var normalizedFrontVector = vector.normalize();
-		console.log(normalizedFrontVector.tuple + "ist aktueller Drehvektor");
+		//console.log(normalizedFrontVector.tuple + "ist aktueller Drehvektor");
 		// crossproduct of viewvector and other vector
 		var turnedFrontVector 	  = vector.rotateXZ(45);
 		var upVector 			  = normalizedFrontVector.crossProduct(turnedFrontVector);

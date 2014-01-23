@@ -1,23 +1,31 @@
-window.setInterval(function(){
-world.drawState();}
-    ,5);
-
 window.addEventListener('keydown', function (e) {
 	//d
-    if (e.keyCode === 68) { world.localPlayer.rotate(-2); }
+    if (e.keyCode === 68) { input.dDown = true; }
     //a
-    if (e.keyCode === 65) { world.localPlayer.rotate(2); }
+    if (e.keyCode === 65) { input.aDown = true; }
     //w
-    if (e.keyCode === 87) { world.localPlayer.moveInDirection(2); }
+    if (e.keyCode === 87) { input.wDown = true; }
     //s
-    if (e.keyCode === 83) { world.localPlayer.moveInDirection(-2); }
-    //r
-    if (e.keyCode === 82) { world.localPlayer.lookUpDown(5); }
-    //f
-    if (e.keyCode === 70) { world.localPlayer.lookUpDown(-5); }
+    if (e.keyCode === 83) { input.sDown = true; }
 
+    //TODO: woanders hin
     MyCanvas.resetText();
 }, false);
+
+window.addEventListener('keyup', function (e) {
+    //d
+    if (e.keyCode === 68) { input.dDown = false; }
+    //a
+    if (e.keyCode === 65) { input.aDown = false; }
+    //w
+    if (e.keyCode === 87) { input.wDown = false; }
+    //s
+    if (e.keyCode === 83) { input.sDown = false; }
+},false);
+
+/////////////////////////////////////////////////////////////////////
+// Mouse Capture Code
+/////////////////////////////////////////////////////////////////////
 
 canvas.addEventListener('mousedown', function(evt) {
     mousePos = MyCanvas.getMousePos(evt);
@@ -25,22 +33,13 @@ canvas.addEventListener('mousedown', function(evt) {
 
 },false);
 
-/////////////////////////////////////////////////////////////////////
-// Mouse Capture Code
-/////////////////////////////////////////////////////////////////////
-
 function moveCallback(e){
     var canvas = $("#pointerLock").get()[0];
     var ctx = canvas.getContext('2d');
 
     var movementX = (e.movementX || e.mozMovementX || e.webkitMovementX || 0) / 10;
     var movementY = (e.movementY || e.mozMovementY || e.webkitMovementY || 0) / 10;
-
-    console.log(movementX+"|"+movementY);
-
-    world.localPlayer.lookUpDown(movementY*-1);
-    world.localPlayer.rotate(movementX*-1);
-    world.drawState();
+    input.setMouseDeltas(movementX,movementY);
 }
 
 // called when the pointer lock has changed. Here we check whether the

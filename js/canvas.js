@@ -282,9 +282,8 @@ MyCanvas.refreshNodes = function() {
 MyCanvas.drawWorld = function(world) {
 	canctx.save();
 	canctx.clearRect(0, 0, canvas.width, canvas.height);
-	//0,0 Shall be in the middle, therefore translatie coordinate system accordingly
+	//0,0 Shall be in the middle, therefore translate coordinate system accordingly
 	canctx.translate(canvas.width / 2, canvas.height / 2);
-
 	allRects.forEach(function(entry){
 		entry.update();
 		entry.draw();
