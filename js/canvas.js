@@ -4,6 +4,9 @@ var allRects = new Array();
 var textpos  = 20;
 var savedText = "Pick a Node to change Params";
 
+var offsetX = 0;
+var offsetY = 0;
+
 function MyCanvas(){
 }
 
@@ -265,14 +268,11 @@ MyCanvas.createControlSet = function(node) {
 	controlSection.appendChild(controlrow3);
 }
 
-MyCanvas.refreshNodes = function() {
-    var allPlayerNodes = world.getPlayerNodes();
+MyCanvas.initNodes = function() {
     var allAudioNodes  = world.getAudioNodes();
-	
-    allPlayerNodes.forEach(function(entry){
-    	recta = new displayRect(entry);
-        allRects.push(recta);
-    })
+	allRects.length = 0;
+    allRects.push(new displayRect(world.localPlayer));
+
     allAudioNodes.forEach(function(entry){
         recta = new displayRect(entry);
         allRects.push(recta);
@@ -283,7 +283,7 @@ MyCanvas.drawWorld = function(world) {
 	canctx.save();
 	canctx.clearRect(0, 0, canvas.width, canvas.height);
 	//0,0 Shall be in the middle, therefore translate coordinate system accordingly
-	canctx.translate(canvas.width / 2, canvas.height / 2);
+	canctx.translate((canvas.width / 2)+offsetX, (canvas.height / 2)+offsetY);
 	allRects.forEach(function(entry){
 		entry.update();
 		entry.draw();
@@ -295,6 +295,9 @@ MyCanvas.drawWorld = function(world) {
 	 for(var i=0; i<rectangles.length; i++){
 		 rectangles[i].drawRECT(canctx);
 	 }
+
+	 //Movers
+	 
 	
 	canctx.restore();
 	MyCanvas.writeMessage();

@@ -8,15 +8,16 @@ function Mover(audioNode,bezierPoints,speed){
 
 	this.animate = function(){
 		//berechne punkt an stelle t
-
+		var newPosition = this.getPathPosition(this.t);
 		//aktualisiere panner etc.
-
+		this.updatePosition(newPosition);
 		//mach was mit t
-		this.t = this.t*1/this.speed;
+		this.t += 1/this.speed;
+		//console.log("t value: "+this.t);
 	}
 
 	this.getPathPosition = function(t){
-		var u = 1 – t;
+		var u = 1 - t;
   		var tt = t*t;
   		var uu = u*u;
   		var uuu = uu * u;
@@ -33,8 +34,10 @@ function Mover(audioNode,bezierPoints,speed){
 		
 		p.addVectorToVector(bezierPoints[3].scale(ttt));
 		//p += ttt * p3; //fourth term
-
 		return new Point(p.getX(),p.getY(),p.getZ());
+	}
 
+	this.updatePosition = function(point){
+		audioNode.changePosition(point);
 	}
 }

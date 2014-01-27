@@ -8,21 +8,23 @@ var reverb = new Reverb('/sounds/rev_saintsilvain.wav',masterGain,0.1);
 
 world.createAudioNode(50,0,100,1,0,1,'/sounds/test.ogg');
 
+var movingNode = new AudioNode(-200,-400,100,1,0,1,'/sounds/test2.ogg');
+world.audioNodes.push(movingNode);
+var movingPath = [new Vector(-20,0,0),new Vector(10,0,-50),new Vector(-30,0,50),new Vector(27,0,-120)];
+world.createMover(movingNode,movingPath,300);
+
 //Test Boden
 world.createRectangle(10,0,50,50);
 world.createRectangle(-120,30,11,70);
 world.createRectangle(-290,0,111,320);
 
 //Debug init
-
-MyCanvas.refreshNodes();
+MyCanvas.initNodes();
 
 //Create Input Object
-
 var input = new Input();
 
 //Start Loop
-
 function gameLoop(){
     //Check for input
     if(input.wDown){
@@ -49,6 +51,7 @@ function gameLoop(){
 
     //"Animate" walking nodes
     //for each animated node animate.
+    world.animateMovers();
 
     //Debug
     world.drawState();

@@ -5,12 +5,19 @@ function World(worldSize){
 
 	this.worldSize = worldSize;
 	this.localPlayer;
-	this.playerNodes = new Array();
 	this.audioNodes  = new Array();
 	this.rectangles = new Array();
 	this.movers = new Array();
 	
-	this.createMover = function(audioNode){}
+	this.createMover = function(audioNode,bezierPoints,speed){
+		this.movers.push(new Mover(audioNode,bezierPoints,speed));
+	}
+
+	this.animateMovers = function(){
+		this.movers.forEach(function(mover){
+			mover.animate();
+		});
+	}
 
 	this.createAudioNode = function(x,y,z,orx,ory,orz,filename){
 		this.audioNodes.push(new AudioNode(x,y,z,orx,ory,orz,filename));
@@ -18,7 +25,6 @@ function World(worldSize){
 
 	this.createLocalPlayer = function(x,y,z){
 		this.localPlayer = new PlayerNode(x,y,z);
-		this.playerNodes.push(this.localPlayer);
 	}
 	
 	this.createRectangle = function(x,y,w,h){

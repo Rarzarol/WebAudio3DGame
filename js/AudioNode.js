@@ -16,6 +16,11 @@ function AudioNode(x,y,z,orx,ory,orz,filename){
 		this.bufferLoader.load();
 	}
 
+	this.changePosition = function(point){
+		this.panner.setPosition(point.getX(),point.getY(),point.getZ());
+		this.position = point;
+	}
+
 	this.setVolume = function(value){
 		this.volume = value;
 		this.gainnode.gain.setValueAtTime(value,context.currentTime);
@@ -92,5 +97,7 @@ function AudioNode(x,y,z,orx,ory,orz,filename){
 
 	this.setOrientation(this.orientation);
 	this.panner.setPosition(x,y,z);
-	this.startAsSample(filename);
+	if(filename != undefined){
+		this.startAsSample(filename)
+	};
 }
