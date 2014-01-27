@@ -9,6 +9,7 @@ function AudioNode(x,y,z,orx,ory,orz,filename){
 	this.panner   = context.createPanner();
 	this.gainnode = context.createGainNode();
 	this.isPlaying = false;
+	this.filename = filename;
 	this.id = IdManager.getId();
 
 	this.startAsSample = function(string){
@@ -98,6 +99,6 @@ function AudioNode(x,y,z,orx,ory,orz,filename){
 	this.setOrientation(this.orientation);
 	this.panner.setPosition(x,y,z);
 	if(filename != undefined){
-		this.startAsSample(filename)
+		this.startAsSample(this.filename);
 	};
 }

@@ -27,8 +27,8 @@ function World(worldSize){
 		this.localPlayer = new PlayerNode(x,y,z);
 	}
 	
-	this.createRectangle = function(x,y,w,h){
-		this.rectangles.push(new Rectangle(x,y,w,h));
+	this.createRectangle = function(x,y,w,h,solid,func){
+		this.rectangles.push(new Rectangle(x,y,w,h,solid,func));
 	}
 
 	this.drawState = function(){
@@ -47,6 +47,7 @@ function World(worldSize){
 		var collisionCounter = 0;
 		for (var i = this.rectangles.length - 1; i >= 0; i--) {
 			if(this.rectangles[i].isContainingPoint(point)){
+				this.rectangles[i].startAssociatedFunction();
 				console.log("rectangle found that intersects with player");
 				collisionCounter++;
 			}

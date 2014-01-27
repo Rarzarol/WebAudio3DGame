@@ -1,6 +1,8 @@
 var chosenNode;
 var nodes;
 
+var codeString;
+
 function changeXOffset(x){
 	offsetX=parseInt(x);
 	console.log("offsetX:"+offsetX);
@@ -40,4 +42,34 @@ Debug.chooseNodeByCoords = function(x,y){
 		MyCanvas.initNodes();
 		}
 	}
+}
+
+Debug.addLine = function(string){
+	codeString+= "\n"+string;
+}
+
+Debug.levelToString = function(){
+	
+	//Get all AudioNodes
+	world.audioNodes.forEach(function(node){
+		Debug.addLine("world.createAudioNode("	+node.position.getX()+","
+												+node.position.getY()+","
+												+node.position.getZ()+","
+												+node.orientation.getX()+","
+												+node.orientation.getY()+","
+												+node.orientation.getZ()+","
+												+'\"'+node.filename+'\"'+");");
+	});
+	
+	//Get all Rectangles
+	world.rectangles.forEach(function(rect){
+		Debug.addLine("world.createRectangle("+rect.x+","
+										+rect.y+","
+										+rect.width+","
+										+rect.height+","
+										+rect.solid+","
+										+rect.func+");");
+	});
+
+	console.log(codeString);
 }
