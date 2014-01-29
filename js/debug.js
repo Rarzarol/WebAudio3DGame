@@ -72,4 +72,5 @@ Debug.levelToString = function(){
 	});
 
 	console.log(codeString);
+	codeString = "";
 }
