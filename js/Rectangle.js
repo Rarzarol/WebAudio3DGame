@@ -76,14 +76,29 @@ this.isContainingPoint = function (point){
 		return false;
 	}
 };
-		
+
+this.changePositionX = function(_x){
+    this.x =_x;
+}
+
+this.changePositionY = function(_y){
+    this.y = _y;
+}
+
+this.changeSizeW = function (_w) {
+    this.width = _w;
+}
+
+this.changeSizeH = function (_h) {
+    this.height = _h;
+}
 
 this.drawRECT = function (context){
     if(this.solid){
         context.fillStyle = '#0000ff';
     }
     else{
-        context.fillStyle = 'rgba(123,123,244,0.2)';
+        context.fillStyle = 'rgba(123,231,255,0.3)';
     }
 
 	context.fillRect(this.x,this.y,this.width,this.height);

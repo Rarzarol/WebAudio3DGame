@@ -46,6 +46,57 @@ MyCanvas.destroyControlSet = function() {
 
 }
 
+MyCanvas.createRectControlSet = function(rect){
+    var controlSection          = document.getElementById('controls');
+    var controlrow1			  	= document.createElement('div');
+    controlrow1.id 			  	= 'controlrow1';
+
+    var xPosText   	= document.createTextNode('Xpos:');
+    var xPosInput   = document.createElement('input');
+    var yPosText    = document.createTextNode('YPos:');
+    var yPosInput   = document.createElement('input');
+    xPosInput.type  = 'number';
+    xPosInput.value= rect.x;
+    xPosInput.onchange = function changeHandler(){
+        rect.changePositionX(this.value);
+    };
+
+    yPosInput.type  = 'number';
+    yPosInput.value = rect.y;
+    yPosInput.onchange = function changeHandler(){
+        rect.changePositionY(this.value);
+    };
+
+    controlrow1.appendChild(xPosText);
+    controlrow1.appendChild(xPosInput);
+    controlrow1.appendChild(yPosText);
+    controlrow1.appendChild(yPosInput);
+
+    var wText   	= document.createTextNode('width:');
+    var wInput   = document.createElement('input');
+    var hText    = document.createTextNode('height:');
+    var hInput   = document.createElement('input');
+    wInput.type  = 'number';
+    wInput.value= rect.width;
+    wInput.onchange = function changeHandler(){
+        rect.changeSizeW(this.value);
+    };
+
+    hInput.type  = 'number';
+    hInput.value = rect.height;
+    hInput.onchange = function changeHandler(){
+        rect.changeSizeH(this.value);
+    };
+
+    controlrow1.appendChild(wText);
+    controlrow1.appendChild(wInput);
+    controlrow1.appendChild(hText);
+    controlrow1.appendChild(hInput);
+
+    controlSection.appendChild(controlrow1);
+
+}
+
 MyCanvas.createControlSet = function(node) {
 	var controlSection    = document.getElementById('controls');
 	//New sub div of control Section - here be all sliders
