@@ -94,6 +94,9 @@ this.changeSizeH = function (_h) {
 }
 
 this.drawRECT = function (context){
+    context.strokeStyle = "#000000";
+    context.lineWidth   = 1;
+
     if(this.solid){
         context.fillStyle = '#0000ff';
     }
@@ -102,6 +105,7 @@ this.drawRECT = function (context){
     }
 
 	context.fillRect(this.x,this.y,this.width,this.height);
+    context.strokeRect(this.x,this.y,this.width,this.height);
 	//context.fillRect(0,0,50,50);
 
 };		
