@@ -6,9 +6,11 @@ world.createLocalPlayer(1,0,1);
 
 var reverb = new Reverb('/sounds/rev_saintsilvain.wav',masterGain,0.1);
 
-world.createAudioNode(50,0,100,1,0,1,'/sounds/test.ogg');
-world.createAudioNode(-50,0,100,1,0,1,'/sounds/test.ogg');
-world.createAudioNode(50,0,400,1,0,1,'/sounds/test.ogg');
+//world.createAudioNode(50,0,100,1,0,1,'/sounds/test.ogg');
+//world.createAudioNode(-50,0,100,1,0,1,'/sounds/test.ogg');
+//world.createAudioNode(50,0,400,1,0,1,'/sounds/test.ogg');
+
+world.createAudioNode(10,0,0,1,0,1,'/new_sounds/fire1.ogg');
 
 var movingNode = new AudioNode(-200,-400,100,1,0,1,'/sounds/test2.ogg');
 world.audioNodes.push(movingNode);
@@ -21,9 +23,18 @@ callbackTest = function(){
     world.movers[0].start();
 }
 
-world.createRectangle(10,0,50,50,false,callbackTest);
-world.createRectangle(-120,30,11,70,true);
-world.createRectangle(-290,0,111,320,true);
+//First Draft lvl
+
+//Top Left first Cage
+world.createRectangle(-100,-70,70,30,true);
+world.createRectangle(-130,-100,250,30,true);
+world.createRectangle(-130,-70,30,200,true);
+
+world.createRectangle(-130,130,220,30,true);
+world.createRectangle(-100,100,100,30,true);
+
+world.createRectangle(10,0,50,50,true);
+world.createRectangle(-290,0,111,320,false);
 
 //Debug init
 MyCanvas.initNodes();

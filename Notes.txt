@@ -42,3 +42,31 @@ lost in the wild
 
 wie signalisieren, dass man sich dreht? evtl. corsshair und so manuell, ebenso wie kompass
 dann creepy sounds
+
+offenes feld => Wind
+im Dorf => kein Wind wegen Mauern
+
+
+
+sounds analysieren, Lautstärken normalisieren, bzw. anpassen auf Event
+spektral zusammen passen,
+bzw. hohe und tiefe töne kombinieren
+
+
+
+>>>>>>>>>>>
+Hochschuletage 8. + 9. Feb:
+Donnerstag normal,
+Freitag falls nötig.
+Samstag ab 10:00 Uhr
+Kai, Wolf
+
+Samstag 11-21 Uhr
+Sonntag 11-20 Uhr
+2 Stunden Blöcke
+
+SA: 11-13 Daniel, 13-15 Kai, 15-17 Roman, 17-19 Wolf, 19-21 Xeng Weng
+SO: 11-13 Donny, 13-15 Ricardo, 15-20 Immanuel, Paul, ggf. auch da sein(Roman) (Wolf)
+
+
+PC: Ubuntu (newest)
