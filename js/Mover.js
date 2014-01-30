@@ -1,43 +1,34 @@
 //Gets array of points, this describes curve. 4 Vectors are expected.
-function Mover(audioNode,bezierPoints,speed){
+function Mover(audioNode,length,speed,oneshot){
 
+    this.oneshot = oneshot;
+    this.origin = audioNode.position;
+    this.oneshot = oneshot;
+    this.length = length;
 	this.audioNode = audioNode;
-	this.bezierPoints = bezierPoints;
+	//this.bezierPoints = bezierPoints;
 	this.speed = speed;
-	this.t = 0;
+	//this.t = 0;
+    this.currentLinePos = 0;
+    this.started = false;
 
-	this.animate = function(){
-		//berechne punkt an stelle t
-		var newPosition = this.getPathPosition(this.t);
-		//aktualisiere panner etc.
-		this.updatePosition(newPosition);
-		//mach was mit t
-		this.t += 1/this.speed;
-		//console.log("t value: "+this.t);
-	}
+    this.start = function(){
+        this.started = true;
+    }
 
-	this.getPathPosition = function(t){
-		var u = 1 - t;
-  		var tt = t*t;
-  		var uu = u*u;
-  		var uuu = uu * u;
-  		var ttt = tt * t;
+    this.animate = function(){
+        if (this.started){
+            this.setNewPosition();
+        }
+    }
 
-  		var p = bezierPoints[0].scale(uuu);
-		//Vector p = uuu * p0; //first term
+    this.setNewPosition = function(){
+        if (this.audioNode.position.subtractPointFromPoint(this.origin).vectorLength() >= this.length){
+            speed = speed*-1;
+        }else{
+            this.currentLinePos += speed;
+            this.audioNode.changePosition(this.audioNode.position.addVectorToPoint(this.audioNode.orientation.scale(this.currentLinePos)));
+        };
 
-		p.addVectorToVector(bezierPoints[1].scale(3 * uu * t));
-		// p += (3 * uu * t) * p1; //second term
-
-		p.addVectorToVector(bezierPoints[2].scale(3 * u * tt));
-		//p += (3 * u * tt) * p2; //third term
-		
-		p.addVectorToVector(bezierPoints[3].scale(ttt));
-		//p += ttt * p3; //fourth term
-		return new Point(p.getX(),p.getY(),p.getZ());
-	}
-
-	this.updatePosition = function(point){
-		audioNode.changePosition(point);
-	}
+    }
 }

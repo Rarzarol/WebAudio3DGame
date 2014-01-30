@@ -49,7 +49,12 @@ function World(worldSize){
 			if(this.rectangles[i].isContainingPoint(point)){
 				this.rectangles[i].startAssociatedFunction();
 				console.log("rectangle found that intersects with player");
-				collisionCounter++;
+				if(this.rectangles[i].solid){
+                    collisionCounter++;
+                }
+                else{
+                    //Some other behaviour?
+                };
 			}
 		};
 		if(collisionCounter > 0) { return true; }

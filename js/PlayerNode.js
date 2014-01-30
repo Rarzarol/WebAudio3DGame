@@ -7,7 +7,7 @@ function PlayerNode(x,y,z){
 
 	//Gainnode for Footsteps
 	this.gainnode    = context.createGainNode();
-	this.id 		 = IdManager.getId();
+	this.id 		 = IdManager.getNodeId();
 
 	this.topLocked    = false;
 	this.bottomLocked = false;

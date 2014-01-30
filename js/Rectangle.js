@@ -17,7 +17,8 @@ if ( x == null || y == null || w == null || h == null )
 
 	throw new Error(errorMsg);
 }
-this.id = IdManager.getId();
+
+this.id = IdManager.getRectId();
 this.x = x;
 this.y = y;
 this.width = w;
@@ -78,7 +79,13 @@ this.isContainingPoint = function (point){
 		
 
 this.drawRECT = function (context){
-	context.fillStyle = '#0000ff';
+    if(this.solid){
+        context.fillStyle = '#0000ff';
+    }
+    else{
+        context.fillStyle = 'rgba(123,123,244,0.2)';
+    }
+
 	context.fillRect(this.x,this.y,this.width,this.height);
 	//context.fillRect(0,0,50,50);
 

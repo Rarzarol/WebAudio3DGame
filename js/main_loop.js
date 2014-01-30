@@ -12,18 +12,17 @@ world.createAudioNode(50,0,400,1,0,1,'/sounds/test.ogg');
 
 var movingNode = new AudioNode(-200,-400,100,1,0,1,'/sounds/test2.ogg');
 world.audioNodes.push(movingNode);
-var movingPath = [new Vector(-20,0,0),new Vector(10,0,-50),new Vector(-30,0,50),new Vector(27,0,-120)];
-world.createMover(movingNode,movingPath,300);
+world.createMover(movingNode,100,0.3,true);
 
 
 //Test Boden
 
 callbackTest = function(){
-    console.log("Callback worked!");
+    world.movers[0].start();
 }
 
 world.createRectangle(10,0,50,50,false,callbackTest);
-world.createRectangle(-120,30,11,70,false);
+world.createRectangle(-120,30,11,70,true);
 world.createRectangle(-290,0,111,320,true);
 
 //Debug init

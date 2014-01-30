@@ -10,7 +10,7 @@ function AudioNode(x,y,z,orx,ory,orz,filename){
 	this.gainnode = context.createGainNode();
 	this.isPlaying = false;
 	this.filename = filename;
-	this.id = IdManager.getId();
+	this.id = IdManager.getNodeId();
 
 	this.startAsSample = function(string){
 		this.bufferLoader = new BufferLoader(context,[string],this.finishedLoading.bind(this));
