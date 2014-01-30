@@ -17,16 +17,17 @@ function Debug(){
 
 }
 
-Debug.chooseNodeByCoords = function(x,y){
-	x -= (canvas.width/2)+offsetX;
-	y -= (canvas.height/2)+offsetY;
-	MyCanvas.writeMessage("Selected Position"+x+"|"+y);
+Debug.chooseNodeByCoords = function(_x,_y){
+	var x = _x-(canvas.width/2)+offsetX;
+	var y = _y-(canvas.height/2)+offsetY;
+	//MyCanvas.writeMessage("Selected Position"+x+"|"+y);
+    console.log("Selected Position"+x+"|"+y);
 
     //This checks if mouse clicked on rectangle
 
     var selectedRectangle;
     world.rectangles.forEach(function(rectangle){
-        var isRectSelected = rectangle.isContainingPoint(new Point(x,0,y));
+        var isRectSelected = rectangle.Contains(x,y);
         if(isRectSelected){
             selectedRectangle = rectangle;
             console.log("selected rectangle"+rectangle.id)

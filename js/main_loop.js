@@ -16,11 +16,16 @@ var movingNode = new AudioNode(-200,-400,100,1,0,1,'/sounds/test2.ogg');
 world.audioNodes.push(movingNode);
 world.createMover(movingNode,100,0.3,true);
 
+ps = new PlayerSound();
 
 //Test Boden
 
 callbackTest = function(){
     world.movers[0].start();
+}
+
+woodSound = function(){
+    ps.collideWood();
 }
 
 //First Draft lvl
@@ -33,7 +38,7 @@ world.createRectangle(-130,-70,30,200,true);
 world.createRectangle(-130,130,220,30,true);
 world.createRectangle(-100,100,100,30,true);
 
-world.createRectangle(10,0,50,50,true);
+world.createRectangle(10,0,50,50,true,woodSound);
 world.createRectangle(-290,0,111,320,false);
 
 //Debug init
