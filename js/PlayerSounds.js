@@ -11,25 +11,30 @@ function PlayerSound(parent){
 
     this.normalFootSteps = new Array();
     this.grassFootSteps = new Array();
+    this.hiGrassFootSteps = new Array();
     this.gravelFootSteps = new Array();
     this.leavesFootSteps = new Array();
     for(var i = 0; i<=NUMBER_OF_FOOTSTEP_FILES-1; i++){
         var sample = new WX.Sampler( { source:"playerStepNormal"+Number(i+1)+".ogg" } );
         var grassSample = new WX.Sampler( { source:"playerStepGrass"+Number(i+1)+".ogg" } );
         var gravelSample = new WX.Sampler( { source:"playerStepGravel"+Number(i+1)+".ogg" } );
-        var hiGrassSample = new WX.Sampler( { source:"playerStepGravel"+Number(i+1)+".ogg" } );
+        var hiGrassSample = new WX.Sampler( { source:"playerStepHiGrass"+Number(i+1)+".ogg" } );
+        var leavesSample = new WX.Sampler( { source:"playerStepLeaves"+Number(i+1)+".ogg" } );
         sample.gain = 1;
         grassSample.gain = 1;
         gravelSample.gain = 1;
         hiGrassSample.gain = 1;
+        leavesSample.gain = 1;
         WX.link(sample,WX.DAC);
         WX.link(grassSample,WX.DAC);
         WX.link(gravelSample,WX.DAC);
         WX.link(hiGrassSample,WX.DAC);
+        WX.link(leavesSample,WX.DAC);
         this.normalFootSteps.push(sample);
         this.grassFootSteps.push(grassSample);
         this.gravelFootSteps.push(gravelSample);
         this.hiGrassFootSteps.push(hiGrassSample);
+        this.hiGrassFootSteps.push(leavesSample);
     }
 
     this.footstep = function(){

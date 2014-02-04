@@ -49,7 +49,7 @@ world.createRectangle(-100,100,100,30,true);
 world.createRectangle(50,-15,30,30,true,woodSound);
 //Allee-Entry-Walkover-Oneshot
 world.createRectangle(120,130,80,30, false,function(){
-    world.localPlayer.changeGroundType(my.namespace.GRASS);
+    world.localPlayer.changeGroundType(GroundTypes.GRASS);
 });
 //Allee
 world.createRectangle(200,-100,30,610,true);
