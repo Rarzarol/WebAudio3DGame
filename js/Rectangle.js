@@ -1,4 +1,4 @@
-Rectangle = function(x,y,w,h,solid,func){ //position x,y width,height
+Rectangle = function(x,y,w,h,solid,func,oneshot){ //position x,y width,height
 
 if ( x == null || y == null || w == null || h == null ) 
 {
@@ -17,7 +17,8 @@ if ( x == null || y == null || w == null || h == null )
 
 	throw new Error(errorMsg);
 }
-
+this.oneshot = oneshot;
+this.playerInside = false;
 this.id = IdManager.getRectId();
 this.x = x;
 this.y = y;
@@ -40,16 +41,25 @@ this.Contains = function(x,y)
 };
 
 this.startAssociatedFunction = function(){
-	if(this.func != undefined && !this.funcFired){
-		this.func();
-		this.funcFired = true;
-	}
-    else if(this.funcFired == true){
-        console.log("func already fired");
+    if(this.func != undefined){
+    //branch for one shot
+        if(this.oneshot){
+            if(!this.funcFired){
+                this.func();
+                this.funcFired = true;
+            }
+            else if(this.funcFired == true){
+                console.log("func already fired");
+            }
+        }
+    //Branch for multiple calls
+        else{
+            this.func();
+        }
     }
-	else{
-		console.log("No callback defined for collision");
-	}
+    else{
+        console.log("No callback defined for collision");
+    }
 }
 
 //check Intersections - see Contains
