@@ -47,20 +47,72 @@ world.createRectangle(-100,100,100,30,true);
 
 //Fire
 world.createRectangle(50,-15,30,30,true,woodSound);
-//Allee-Entry-Walkover-Oneshot
-world.createRectangle(120,130,80,30, false,function(){
+//Pass to next Allee-Bay
+world.createRectangle(120,145,80,15, false,function(){
     world.localPlayer.changeGroundType(GroundTypes.GRASS);
+});
+//Reverse to last Start-Bay
+world.createRectangle(120,130,80,15, false,function(){
+    world.localPlayer.changeGroundType(GroundTypes.NORMAL);
 });
 //Allee
 world.createRectangle(200,-100,30,610,true);
 world.createRectangle(90,160,30,350,true);
-//Walls of Town
+//Pass to next Town-Bay
+world.createRectangle(120,525,80,15,false,function(){
+    world.localPlayer.changeGroundType(GroundTypes.NORMAL);
+});
+//Reverse to last Allee-Bay
+world.createRectangle(120,510,80,15,false,function(){
+    world.localPlayer.changeGroundType(GroundTypes.GRASS);
+});
+//Upper Walls of Town
 world.createRectangle(-130,510,250,30,true);
 world.createRectangle(200,510,250,30,true);
-world.createRectangle(-130,540,30,530,true);
-world.createRectangle(420,540,30,530,true);
+world.createRectangle(-130,540,30,550,true);
+world.createRectangle(420,540,30,350,true);
 //Tavern
-world.createRectangle(-70,570,180,180,true);
+world.createRectangle(-70,570,160,140,true);
+//Shop
+world.createRectangle(220,540,200,150,true);
+//MarketPlace
+world.createRectangle(30,710,280,150,false);
+//Church Part I
+world.createRectangle(-50,860,200,200,true);
+//Church Part II
+world.createRectangle(150,900,140,140,true);
+//Well
+world.createRectangle(350,960,30,30,true);
+//Lower Walls of Town
+world.createRectangle(-130,1090,580,30,true);
+//Pass to next Farm-Bay
+world.createRectangle(435,890,15,200,false,function(){
+    world.localPlayer.changeGroundType(GroundTypes.GRASS);
+});
+//Reverse to last Town-Bay
+world.createRectangle(420,890,15,200,false,function(){
+    world.localPlayer.changeGroundType(GroundTypes.NORMAL);
+});
+//Upper Farm Boundarys
+world.createRectangle(450,860,330,30,true);
+world.createRectangle(750,890,30,350,true);
+//Stable
+world.createRectangle(600,890,150,200,true);
+//ChickenCoop
+world.createRectangle(675,1090,75,150,true);
+//Lower Farm Boundarys
+world.createRectangle(350,1240,430,30,true);
+world.createRectangle(350,1120,30,30,true);
+//Exit Farm
+
+//Pass to next Wood-Bay
+world.createRectangle(350,1150,15,90,false,function(){
+    world.localPlayer.changeGroundType(GroundTypes.GRASS);
+});
+//Reverse to last Farm-Bay
+world.createRectangle(365,1150,15,90,false,function(){
+    world.localPlayer.changeGroundType(GroundTypes.NORMAL);
+});
 
 //Debug init
 MyCanvas.initNodes();

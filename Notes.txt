@@ -53,6 +53,9 @@ spektral zusammen passen,
 bzw. hohe und tiefe töne kombinieren
 
 
+A und D = strafe / side step
+an orientation um 90° drehen (perpendicular) und verschieben (vector verlängern auf X-Z Achse) (oder move by vector)
+
 
 >>>>>>>>>>>
 Hochschuletage 8. + 9. Feb:
