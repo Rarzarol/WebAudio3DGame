@@ -42,22 +42,36 @@ function World(worldSize){
 	this.getAudioNodes = function(){
 		return this.audioNodes;
 	}
-	
+
+    //Still a bit confusing, maybe separate the function into more logical pieces
+    //returns if the player will collide, and also handles the firing of an event
+    //inside a traversable event rectangle...
 	this.willCollide = function(point){
 		var collisionCounter = 0;
 		for (var i = this.rectangles.length - 1; i >= 0; i--) {
 			if(this.rectangles[i].isContainingPoint(point)){
-				this.rectangles[i].startAssociatedFunction();
-				console.log("rectangle found that intersects with player");
-				if(this.rectangles[i].solid){
+
+                //What happens if player steps into event rect
+                if(this.rectangles[i].playerInside == false){
+                    //function is started
+                    this.rectangles[i].startAssociatedFunction();
+                    console.log("event fired!");
+
+                    //afterwards locked
+                    this.rectangles[i].playerInside = true;
+                }
+                //if solid, collision counter increase
+                if(this.rectangles[i].solid){
                     collisionCounter++;
                 }
-                else{
-                    //Some other behaviour?
-                }
 			}
+            else{
+                if(this.rectangles[i].playerInside == true){
+                    console.log("player outside of rectangle "+this.rectangles[i].id+". Possible to fire its function again.");
+                    this.rectangles[i].playerInside = false;
+                }
+            }
 		}
-		if(collisionCounter > 0) { return true; }
-		else{ return false; }
+		return collisionCounter > 0;
 	}
 }

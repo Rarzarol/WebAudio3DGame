@@ -36,8 +36,12 @@ woodSound = function(){
 world.createRectangle(-10,-10,20,20,false);
 //Top Left first Cage
 //Go Right
-world.createRectangle(-130,-100,330,30,true);
-world.createRectangle(-100,-70,70,30,true);
+world.createRectangle(-130,-100,330,30,false,function(){
+    GameCanvas.displayMessage("Hahaha Ich bin ein munterer Herr");
+});
+world.createRectangle(-100,-70,70,30,false,function(){
+    GameCanvas.displayMessage("Und ich auuuuch! hahaha");
+});
 world.createRectangle(170,-70,30,170,true);
 //In My Way
 world.createRectangle(-130,-70,30,200,true);
@@ -99,6 +103,9 @@ function gameLoop(){
 
     //Debug
     world.drawState();
+
+    //
+    GameCanvas.draw();
 
 }
 
