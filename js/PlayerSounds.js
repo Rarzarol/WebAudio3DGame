@@ -1,12 +1,60 @@
-function PlayerSound(){
+var NUMBER_OF_FOOTSTEP_FILES = 5;
+
+function PlayerSound(parent){
+    this.parent = parent;
+    this.nextFootstep = 0;
+    this.timeOfLastFootstep = 0;
 
     var wood = new WX.Sampler({ source:"new_sounds/wood2.ogg" });
     wood.gain = 1;
     WX.link(wood,WX.DAC);
 
-    this.footstep = function(){
-        //Alternate between footsteps
+    this.normalFootSteps = new Array();
+    this.grassFootSteps = new Array();
+    this.gravelFootSteps = new Array();
+    this.leavesFootSteps = new Array();
+    for(var i = 0; i<=NUMBER_OF_FOOTSTEP_FILES-1; i++){
+        var sample = new WX.Sampler( { source:"playerStepNormal"+Number(i+1)+".ogg" } );
+        var grassSample = new WX.Sampler( { source:"playerStepGrass"+Number(i+1)+".ogg" } );
+        var gravelSample = new WX.Sampler( { source:"playerStepGravel"+Number(i+1)+".ogg" } );
+        var hiGrassSample = new WX.Sampler( { source:"playerStepGravel"+Number(i+1)+".ogg" } );
+        sample.gain = 1;
+        grassSample.gain = 1;
+        gravelSample.gain = 1;
+        hiGrassSample.gain = 1;
+        WX.link(sample,WX.DAC);
+        WX.link(grassSample,WX.DAC);
+        WX.link(gravelSample,WX.DAC);
+        WX.link(hiGrassSample,WX.DAC);
+        this.normalFootSteps.push(sample);
+        this.grassFootSteps.push(grassSample);
+        this.gravelFootSteps.push(gravelSample);
+        this.hiGrassFootSteps.push(hiGrassSample);
     }
+
+    this.footstep = function(){
+        //Randomize next step
+        if(context.currentTime - this.timeOfLastFootstep >= 0.6){
+            if(parent.currentGround == GroundTypes.NORMAL){
+                this.normalFootSteps[this.nextFootstep].noteOn(60);
+            }
+            else if(parent.currentGround == GroundTypes.GRASS){
+                this.grassFootSteps[this.nextFootstep].noteOn(60);
+            }
+            else if(parent.currentGround == GroundTypes.GRAVEL){
+                this.gravelFootSteps[this.nextFootstep].noteOn(60);
+            }
+            else if(parent.currentGround == GroundTypes.HIGRASS){
+                this.hiGrassFootSteps[this.nextFootstep].noteOn(60);
+            }
+            this.nextFootstep = Math.floor(Math.random() * (NUMBER_OF_FOOTSTEP_FILES-1));
+            this.timeOfLastFootstep = context.currentTime;
+
+            console.log("next footstep:"+this.nextFootstep);
+        }
+    };
+
+
 
     this.collideStone = function(){
 

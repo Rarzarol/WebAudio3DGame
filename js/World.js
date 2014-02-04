@@ -54,10 +54,10 @@ function World(worldSize){
                 }
                 else{
                     //Some other behaviour?
-                };
+                }
 			}
-		};
+		}
 		if(collisionCounter > 0) { return true; }
-		else{ return false; };
+		else{ return false; }
 	}
 }

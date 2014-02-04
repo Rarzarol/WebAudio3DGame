@@ -4,11 +4,11 @@ function PlayerNode(x,y,z){
 	var or  		 = new Vector(1,0,0); //hier abgreifen
 	this.orientation = or.normalize();
 	this.degrees 	 = 0;
-
+    this.playerSound = new PlayerSound(this);
 	//Gainnode for Footsteps
 	this.gainnode    = context.createGainNode();
 	this.id 		 = IdManager.getNodeId();
-
+    this.currentGround = GroundTypes.NORMAL;
 	this.topLocked    = false;
 	this.bottomLocked = false;
 
@@ -23,6 +23,7 @@ function PlayerNode(x,y,z){
 
 	//Moves Player on the XZ plane only
 	this.moveInDirection = function(incr){
+        this.playerSound.footstep();
 		var newPosition = this.position.addVectorToPoint(this.orientation.scale(incr));
 		var newPositionXZ = new Point(newPosition.getX(),0,newPosition.getZ());
 		var collision = world.willCollide(newPositionXZ);
@@ -34,6 +35,10 @@ function PlayerNode(x,y,z){
 			this.changePosition(newPositionXZ);
 		}
 	}
+
+    this.changeGroundType = function(groundType){
+        this.currentGround = groundType;
+    }
 
 	this.moveByVector = function(vector){
 		this.position = this.position.addVectorToPoint(vector);
@@ -116,7 +121,7 @@ function PlayerNode(x,y,z){
 		else {
 			this.degrees += degree;
 			//console.log("Akt. Drehung:"+this.degrees);
-		};
+		}
 	}
 
 	//Uebergebener Vektor ist Sichtrichtung. Daraus wird der "Kopf"-Vektor ausgerechnet.

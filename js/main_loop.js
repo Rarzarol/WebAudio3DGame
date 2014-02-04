@@ -22,8 +22,6 @@ var movingNode = new AudioNode(-200,-400,100,1,0,1,'/sounds/test2.ogg');
 world.audioNodes.push(movingNode);
 world.createMover(movingNode,100,0.3,true);
 
-ps = new PlayerSound();
-
 //Test Boden
 
 callbackTest = function(){
@@ -31,7 +29,7 @@ callbackTest = function(){
 }
 
 woodSound = function(){
-    ps.collideWood();
+    world.localPlayer.playerSound.collideWood();
 }
 
 //First Draft lvl
@@ -50,7 +48,9 @@ world.createRectangle(-100,100,100,30,true);
 //Fire
 world.createRectangle(50,-15,30,30,true,woodSound);
 //Allee-Entry-Walkover-Oneshot
-world.createRectangle(120,130,80,30, false);
+world.createRectangle(120,130,80,30, false,function(){
+    world.localPlayer.changeGroundType(my.namespace.GRASS);
+});
 //Allee
 world.createRectangle(200,-100,30,610,true);
 world.createRectangle(90,160,30,350,true);
