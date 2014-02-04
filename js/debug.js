@@ -30,7 +30,7 @@ Debug.chooseNodeByCoords = function(_x,_y){
         var isRectSelected = rectangle.Contains(x,y);
         if(isRectSelected){
             selectedRectangle = rectangle;
-            console.log("selected rectangle"+rectangle.id)
+            console.log("selected rectangle"+rectangle.id);
         };
     });
 
