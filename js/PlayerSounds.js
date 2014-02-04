@@ -15,11 +15,11 @@ function PlayerSound(parent){
     this.gravelFootSteps = new Array();
     this.leavesFootSteps = new Array();
     for(var i = 0; i<=NUMBER_OF_FOOTSTEP_FILES-1; i++){
-        var sample = new WX.Sampler( { source:"playerStepNormal"+Number(i+1)+".ogg" } );
-        var grassSample = new WX.Sampler( { source:"playerStepGrass"+Number(i+1)+".ogg" } );
-        var gravelSample = new WX.Sampler( { source:"playerStepGravel"+Number(i+1)+".ogg" } );
-        var hiGrassSample = new WX.Sampler( { source:"playerStepHiGrass"+Number(i+1)+".ogg" } );
-        var leavesSample = new WX.Sampler( { source:"playerStepLeaves"+Number(i+1)+".ogg" } );
+        var sample = new WX.Sampler( { source:"footstep_sounds/playerStepNormal"+Number(i+1)+".ogg" } );
+        var grassSample = new WX.Sampler( { source:"footstep_sounds/playerStepGrass"+Number(i+1)+".ogg" } );
+        var gravelSample = new WX.Sampler( { source:"footstep_sounds/playerStepGravel"+Number(i+1)+".ogg" } );
+        var hiGrassSample = new WX.Sampler( { source:"footstep_sounds/playerStepHiGrass"+Number(i+1)+".ogg" } );
+        var leavesSample = new WX.Sampler( { source:"footstep_sounds/playerStepLeaves"+Number(i+1)+".ogg" } );
         sample.gain = 1;
         grassSample.gain = 1;
         gravelSample.gain = 1;
