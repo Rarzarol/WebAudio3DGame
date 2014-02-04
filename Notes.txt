@@ -58,6 +58,7 @@ bzw. hohe und tiefe töne kombinieren
 Hochschuletage 8. + 9. Feb:
 Donnerstag normal,
 Freitag falls nötig.
+Auftakt:
 Samstag ab 10:00 Uhr
 Kai, Wolf
 
@@ -67,6 +68,8 @@ Sonntag 11-20 Uhr
 
 SA: 11-13 Daniel, 13-15 Kai, 15-17 Roman, 17-19 Wolf, 19-21 Xeng Weng
 SO: 11-13 Donny, 13-15 Ricardo, 15-20 Immanuel, Paul, ggf. auch da sein(Roman) (Wolf)
-
+Abbau: Sonntag 20 Uhr - Roman & Wolf
 
 PC: Ubuntu (newest)
+User: Student (hier Admin)
+pw: Ben
