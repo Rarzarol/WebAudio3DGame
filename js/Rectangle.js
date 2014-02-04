@@ -27,7 +27,7 @@ this.solid = solid;
 
 this.func = func;
 //For now, lets just fire the callback once
-this.functionFired = false;
+this.funcFired = false;
 
 //check if in boundarys
 this.Contains = function(x,y)
@@ -40,10 +40,13 @@ this.Contains = function(x,y)
 };
 
 this.startAssociatedFunction = function(){
-	if(this.func != undefined && !this.functionFired){
+	if(this.func != undefined && !this.funcFired){
 		this.func();
-		this.functionFired = true;
+		this.funcFired = true;
 	}
+    else if(this.funcFired == true){
+        console.log("func already fired");
+    }
 	else{
 		console.log("No callback defined for collision");
 	}
@@ -70,7 +73,10 @@ this.Intersects = function(shape) //for rectangles and circles
 this.isContainingPoint = function (point){
 	if (point.getX() >= this.x && point.getX() <= this.x + this.width &&
 		point.getZ() >= this.y && point.getZ() <= this.y + this.height){
-			return true;
+			console.log("point contained in rect"+this.id);
+            return true;
+            //DEBUG
+
 	}
 	else{
 		return false;
