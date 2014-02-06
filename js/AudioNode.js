@@ -10,17 +10,15 @@ function AudioNode(x,y,z,orx,ory,orz,filename,innerConeAngle,outerConeAngle,refD
 	this.panner   = context.createPanner();
 
     //init panner
-   // this.panner.coneGain = (innerConeGain == undefined) ? 1 : innerConeGain ;
-   
-  //Problem seems to be here...
+    this.panner.coneGain = (innerConeGain == undefined) ? 1 : innerConeGain ;
     this.panner.panningModel = "HRTF";
     this.panner.coneOuterGain = (outerConeGain == undefined) ? 1 : outerConeGain;
     this.panner.refDistance = (refDistance == undefined) ? 1 : refDistance;
     this.panner.maxDistance = (maxDistance == undefined) ? 10000 : maxDistance ;
     this.panner.coneInnerAngle = (innerConeAngle == undefined) ? 360 : innerConeAngle;
     this.panner.coneOuterAngle = (outerConeAngle == undefined) ? 360 : outerConeAngle;
-    this.panner.DistanceModelType  = (distanceModel == undefined) ? "linear" : distanceModel;
     this.panner.rolloffFactor = (rolloff == undefined) ? 1 : rolloff;
+	this.panner.DistanceModelType  = (distanceModel == undefined) ? "linear" : distanceModel;
 
 	this.gainnode = context.createGainNode();
 	this.isPlaying = false;

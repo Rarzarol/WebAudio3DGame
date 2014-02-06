@@ -6,20 +6,19 @@ world.createLocalPlayer(1,0,1);
 
 var reverb = new Reverb('/sounds/rev_saintsilvain.wav',masterGain,0.1);
 
-//The Sounds
-//function AudioNode(x,y,z,orx,ory,orz,filename,innerConeAngle,outerConeAngle,refDistance,maxDistance,rolloff,innerConeGain,outerConeGain,distanceModel)
+//Atmo, for change of File, Go To: index.html
+document.getElementById('mainatmo').play();
 
-//Pseude Atmo first Room
-//Generates Crash @ Wolf
-//world.createAudioNode(55,0,0,1,0,1,'/new_sounds/mainatmo1.ogg');
+//The Sounds - Blueprint:
+//function AudioNode(x,y,z,orx,ory,orz,filename
+//innerConeAngle,outerConeAngle,refDistance,maxDistance,rolloff,innerConeGain,outerConeGain,distanceModel) = 8 Params
+
 //Fire
-//world.createAudioNode(65,0,-5,1,0,1,'/new_sounds/fire1.ogg');
+world.createAudioNode(65,0,-5,1,0,1,'/new_sounds/fire1.ogg');
 //Crickets
-world.createAudioNode(-120,0,-90,1,0,1,"/cricket_sounds/cricket1.ogg",45,75,1,100,0.2,0.2,1,1);
-//world.createAudioNode(200,0,-90,1,0,1,'/cricket_sounds/cricket2.ogg',undefined,undefined,undefined,undefined,undefined,0.5,0.5,undefined);
-//world.createAudioNode(0,0,130,1,0,1,'/cricket_sounds/cricket3.ogg',undefined,undefined,undefined,undefined,undefined,0.5,0.5,undefined);
-
-
+world.createAudioNode(-120,0,-90,1,0,1,"/cricket_sounds/cricket1.ogg",90,120,1,100,undefined,0.7,0.5,"linear");
+world.createAudioNode(200,0,-90,-1,0,1,'/cricket_sounds/cricket2.ogg',90,120,undefined,undefined,undefined,0.5,0.5,undefined);
+world.createAudioNode(0,0,130,1,0,1,'/cricket_sounds/cricket3.ogg',90,120,undefined,undefined,undefined,0.5,0.5,undefined);
 
 //Trees 1 and 2 (left side)
 world.createAudioNode(70,0,400,1,0,1,'/new_sounds/tree1.ogg',undefined,undefined,undefined,undefined,undefined,0.5,0.5,undefined);
@@ -29,7 +28,7 @@ world.createAudioNode(255,0,200,1,0,1,'/sounds/birds1.ogg',undefined,undefined,u
 world.createAudioNode(235,0,455,1,0,1,'/sounds/birds2.ogg',undefined,undefined,undefined,undefined,undefined,0.5,0.5,undefined);
 
 //Churchbell-Test
-//world.createAudioNode(150,0,955,1,0,1,'/new_sounds/churchbell1.ogg',undefined,undefined,undefined,undefined,undefined,1.0,1.0,undefined);
+world.createAudioNode(150,100,955,1,0,1,'/new_sounds/churchbell1.ogg',360,360,1,1000,undefined,0.5,0.45,"linear");
 
 //var movingNode = new AudioNode(-200,0,100,1,0,1,'/sounds/test2.ogg',undefined,undefined,undefined,undefined,undefined,0.5,0.5,undefined);
 //world.audioNodes.push(movingNode);
@@ -47,21 +46,23 @@ woodSound = function(){
 }
 
 //First Draft lvl
-world.createRectangle(-10,-10,20,20,false);
+world.createRectangle(-10,-10,20,20,false,function(){
+  GameCanvas.displayMessage("Wo...wo bin ich hier...?$Mein Kopf tut weh...");
+});
 //Top Left first Cage
 //Go Right
 world.createRectangle(-130,-100,330,30,true,function(){
-    GameCanvas.displayMessage("Das Gestruepp ist hier zu dicht, ich komme nicht durch.$Vielleicht versuche ich es weiter rechts...");
+    GameCanvas.displayMessage("Das Gestrüpp ist hier zu dicht, ich komme nicht durch.$Vielleicht versuche ich es weiter rechts...");
 });
 world.createRectangle(-100,-70,70,30,true,function(){
-    GameCanvas.displayMessage("Das Gestruepp ist sehr dicht, ich kann hier nicht weiter.$Ich versuche es weiter rechts...");
+    GameCanvas.displayMessage("Das Gestrüpp ist sehr dicht, ich kann hier nicht weiter.$Ich versuche es weiter rechts...");
 });
 world.createRectangle(185,-70,15,200,true,function(){
-    GameCanvas.displayMessage("Das Gestruepp ist hier zu dicht, ich komme nicht durch.$Vielleicht versuche ich es weiter rechts...");
+    GameCanvas.displayMessage("Das Gestrüpp ist hier zu dicht, ich komme nicht durch.$Vielleicht versuche ich es weiter rechts...");
 });
 //In My Way
 world.createRectangle(-130,-70,30,200,true,function(){
-    GameCanvas.displayMessage("Ich kann hier nicht weiter. Etwas stacheliges versperrt mit den Weg.$Ich sollte es wo anders versuchen...");
+    GameCanvas.displayMessage("Ich kann hier nicht weiter. Etwas stacheliges versperrt mir den Weg.$Ich sollte es wo anders versuchen...");
 });
 //Go Left
 world.createRectangle(-130,130,250,30,true,function(){
@@ -74,7 +75,8 @@ world.createRectangle(-100,100,100,30,true,function(){
 //Fire
 //hier war WoodSound
 world.createRectangle(50,-15,30,30,true,function(){
-    GameCanvas.displayMessage("Was ist das? Hier brennt etwas. Ich spüre die Hitze$und höre das Feuer. Ich kann nicht näher ran gehen...")
+	woodSound();
+    GameCanvas.displayMessage("Was ist das? Hier brennt etwas. Ich spüre die Hitze$und höre das Feuer. Ich kann nicht näher ran gehen...");
 });
 //Pass to next Allee-Bay
 world.createRectangle(120,145,80,15, false,function(){
@@ -124,7 +126,7 @@ world.createRectangle(220,540,200,150,true,function(){
 });
 //MarketPlace
 world.createRectangle(30,710,280,150,false,function(){
-	GameCanvas.displayMessage("Der Boden ist hier gepflastert und es liegen Sachen herum.$ Die Kirchturm-Glocke ist lauter...");
+	GameCanvas.displayMessage("Der Boden ist hier gepflastert und es liegen Sachen herum.$Die Kirchturm-Glocke ist lauter...");
 });
 //Church Part I
 world.createRectangle(-50,860,200,200,true,function(){

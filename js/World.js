@@ -19,8 +19,8 @@ function World(worldSize){
 		});
 	}
 
-	this.createAudioNode = function(x,y,z,orx,ory,orz,filename){
-		this.audioNodes.push(new AudioNode(x,y,z,orx,ory,orz,filename));
+	this.createAudioNode = function(x,y,z,orx,ory,orz,filename,innerConeAngle,outerConeAngle,refDistance,maxDistance,rolloff,innerConeGain,outerConeGain,distanceModel){
+		this.audioNodes.push(new AudioNode(x,y,z,orx,ory,orz,filename,innerConeAngle,outerConeAngle,refDistance,maxDistance,rolloff,innerConeGain,outerConeGain,distanceModel));
 	}
 
 	this.createLocalPlayer = function(x,y,z){

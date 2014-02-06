@@ -23,7 +23,6 @@ function PlayerNode(x,y,z){
 
 	//Moves Player on the XZ plane only
 	this.moveInDirection = function(incr){
-        this.playerSound.footstep();
 		var newPosition = this.position.addVectorToPoint(this.orientation.scale(incr));
 		var newPositionXZ = new Point(newPosition.getX(),0,newPosition.getZ());
 		var collision = world.willCollide(newPositionXZ);
@@ -32,7 +31,9 @@ function PlayerNode(x,y,z){
 			console.log("collision detected");
 		}
 		else{
+			this.playerSound.footstep();
 			this.changePosition(newPositionXZ);
+			
 		}
 	}
 
