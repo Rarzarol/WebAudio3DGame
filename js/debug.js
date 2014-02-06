@@ -71,8 +71,8 @@ Debug.addLine = function(string){
 }
 
 Debug.levelToString = function(){
-	
-	//Get all AudioNodes
+	// function AudioNode(x,y,z,orx,ory,orz,filename,innerConeAngle,outerConeAngle,refDistance,maxDistance,rolloff,innerConeGain,outerConeGain,distanceModel)
+    //Get all AudioNodes
 	world.audioNodes.forEach(function(node){
 		Debug.addLine("world.createAudioNode("	+node.position.getX()+","
 												+node.position.getY()+","
@@ -80,7 +80,15 @@ Debug.levelToString = function(){
 												+node.orientation.getX()+","
 												+node.orientation.getY()+","
 												+node.orientation.getZ()+","
-												+'\"'+node.filename+'\"'+");");
+												+'\"'+node.filename+'\"'+","
+                                                +node.panner.coneInnerAngle+","
+                                                +node.panner.coneOuterAngle+","
+                                                +node.panner.refDistance+","
+                                                +node.panner.maxDistance+","
+                                                +node.panner.rolloffFactor+","
+                                                +node.panner.coneGain+","
+                                                +node.panner.coneOuterGain+","
+                                                +node.panner.distanceModel+");");
 	});
 	
 	//Get all Rectangles

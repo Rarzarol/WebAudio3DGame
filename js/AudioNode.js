@@ -1,5 +1,6 @@
-function AudioNode(x,y,z,orx,ory,orz,filename){
-	this.position = new Point(x,y,z);
+function AudioNode(x,y,z,orx,ory,orz,filename,innerConeAngle,outerConeAngle,refDistance,maxDistance,rolloff,innerConeGain,outerConeGain,distanceModel){
+
+    this.position = new Point(x,y,z);
 	this.orientation = new Vector(orx,ory,orz);
 	this.bufferLoader;
 	this.audioBuffer = null;
@@ -7,6 +8,17 @@ function AudioNode(x,y,z,orx,ory,orz,filename){
 	this.currentRotation = 0;
 	this.volume = 10;
 	this.panner   = context.createPanner();
+
+    //init panner
+    this.panner.coneGain = innerConeGain;
+    this.panner.coneOuterGain = outerConeGain;
+    this.panner.refDistance = refDistance;
+    this.panner.maxDistance = maxDistance;
+    this.panner.coneInnerAngle = innerConeAngle;
+    this.panner.coneOuterAngle = outerConeAngle;
+    this.panner.distanceModel = distanceModel;
+    this.panner.rolloffFactor = rolloff;
+
 	this.gainnode = context.createGainNode();
 	this.isPlaying = false;
 	this.filename = filename;

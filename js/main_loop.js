@@ -8,6 +8,7 @@ var reverb = new Reverb('/sounds/rev_saintsilvain.wav',masterGain,0.1);
 
 //The Sounds
 
+
 //Pseude Atmo first Room
 //Generates Crash @ Wolf
 //world.createAudioNode(65,-5,0,1,0,1,'/new_sounds/mainatmo1.ogg');
@@ -19,6 +20,7 @@ world.createAudioNode(200,0,-90,1,0,1,'/cricket_sounds/cricket2.ogg');
 world.createAudioNode(0,0,130,1,0,1,'/cricket_sounds/cricket3.ogg');
 
 
+
 //Trees 1 and 2 (left side)
 world.createAudioNode(70,0,400,1,0,1,'/new_sounds/tree1.ogg');
 world.createAudioNode(45,0,290,1,0,1,'/new_sounds/tree2.ogg');
@@ -28,9 +30,11 @@ world.createAudioNode(235,0,455,1,0,1,'/sounds/birds2.ogg');
 
 
 
+
 //var movingNode = new AudioNode(-200,-400,100,1,0,1,'/sounds/test2.ogg');
 //world.audioNodes.push(movingNode);
 //world.createMover(movingNode,100,0.3,true);
+
 
 //Test Boden
 
