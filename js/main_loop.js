@@ -10,7 +10,7 @@ var reverb = new Reverb('/sounds/rev_saintsilvain.wav',masterGain,0.1);
 //world.createAudioNode(-50,0,100,1,0,1,'/sounds/test.ogg');
 //world.createAudioNode(50,0,400,1,0,1,'/sounds/test.ogg');
 
-world.createAudioNode(65,-5,0,1,0,1,'/new_sounds/fire1.ogg');
+/*world.createAudioNode(65,-5,0,1,0,1,'/new_sounds/fire1.ogg');
 //Trees 1 and 2 (left side)
 world.createAudioNode(70,0,400,1,0,1,'/new_sounds/tree1.ogg');
 world.createAudioNode(45,0,290,1,0,1,'/new_sounds/tree2.ogg');
@@ -20,7 +20,7 @@ world.createAudioNode(235,0,455,1,0,1,'/sounds/birds2.ogg');
 
 var movingNode = new AudioNode(-200,-400,100,1,0,1,'/sounds/test2.ogg');
 world.audioNodes.push(movingNode);
-world.createMover(movingNode,100,0.3,true);
+world.createMover(movingNode,100,0.3,true);*/
 
 //Test Boden
 
@@ -38,9 +38,10 @@ world.createRectangle(-10,-10,20,20,false);
 //Go Right
 world.createRectangle(-130,-100,330,30,false,function(){
     GameCanvas.displayMessage("Hahaha Ich bin ein munterer Herr");
+
 });
 world.createRectangle(-100,-70,70,30,false,function(){
-    GameCanvas.displayMessage("Und ich auuuuch! hahaha");
+    GameCanvas.displayMessage("Und ich auuuuch! hahaha$asdasdasd$asdasdasd");
 });
 world.createRectangle(170,-70,30,170,true);
 //In My Way
