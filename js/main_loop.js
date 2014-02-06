@@ -11,25 +11,25 @@ var reverb = new Reverb('/sounds/rev_saintsilvain.wav',masterGain,0.1);
 
 //Pseude Atmo first Room
 //Generates Crash @ Wolf
-//world.createAudioNode(65,-5,0,1,0,1,'/new_sounds/mainatmo1.ogg');
+world.createAudioNode(55,0,0,1,0,1,'/new_sounds/mainatmo1.ogg',undefined,undefined,undefined,undefined,undefined,0.75,0.5,undefined);
 //Fire
 world.createAudioNode(65,-5,0,1,0,1,'/new_sounds/fire1.ogg');
 //Crickets
-world.createAudioNode(-120,0,-90,1,0,1,'/cricket_sounds/cricket1.ogg');
-world.createAudioNode(200,0,-90,1,0,1,'/cricket_sounds/cricket2.ogg');
-world.createAudioNode(0,0,130,1,0,1,'/cricket_sounds/cricket3.ogg');
+world.createAudioNode(-120,0,-90,1,0,1,'/cricket_sounds/cricket1.ogg',undefined,undefined,undefined,undefined,undefined,0.75,0.5,undefined);
+world.createAudioNode(200,0,-90,1,0,1,'/cricket_sounds/cricket2.ogg',undefined,undefined,undefined,undefined,undefined,0.75,0.5,undefined);
+world.createAudioNode(0,0,130,1,0,1,'/cricket_sounds/cricket3.ogg',undefined,undefined,undefined,undefined,undefined,0.75,0.5,undefined);
 
 
 
 //Trees 1 and 2 (left side)
-world.createAudioNode(70,0,400,1,0,1,'/new_sounds/tree1.ogg');
-world.createAudioNode(45,0,290,1,0,1,'/new_sounds/tree2.ogg');
+world.createAudioNode(70,0,400,1,0,1,'/new_sounds/tree1.ogg',undefined,undefined,undefined,undefined,undefined,0.75,0.5,undefined);
+world.createAudioNode(45,0,290,1,0,1,'/new_sounds/tree2.ogg',undefined,undefined,undefined,undefined,undefined,0.75,0.5,undefined);
 //Trees 3 and 4 (right side)
-world.createAudioNode(255,0,200,1,0,1,'/sounds/birds1.ogg');
-world.createAudioNode(235,0,455,1,0,1,'/sounds/birds2.ogg');
+world.createAudioNode(255,0,200,1,0,1,'/sounds/birds1.ogg',undefined,undefined,undefined,undefined,undefined,0.75,0.5,undefined);
+world.createAudioNode(235,0,455,1,0,1,'/sounds/birds2.ogg',undefined,undefined,undefined,undefined,undefined,0.75,0.5,undefined);
 
-
-
+//Churchbell-Test
+world.createAudioNode((150,0,955,1,0,1,'/new_sounds/churchbell1.ogg',undefined,undefined,undefined,undefined,undefined,1,0.75,undefined);
 
 //var movingNode = new AudioNode(-200,-400,100,1,0,1,'/sounds/test2.ogg');
 //world.audioNodes.push(movingNode);
@@ -51,13 +51,13 @@ world.createRectangle(-10,-10,20,20,false);
 //Top Left first Cage
 //Go Right
 world.createRectangle(-130,-100,330,30,true,function(){
-    GameCanvas.displayMessage("Das Gestrüpp ist hier zu dicht, ich komme nicht durch.$Vielleicht versuche ich es weiter rechts...");
+    GameCanvas.displayMessage("Das Gestruepp ist hier zu dicht, ich komme nicht durch.$Vielleicht versuche ich es weiter rechts...");
 });
 world.createRectangle(-100,-70,70,30,true,function(){
-    GameCanvas.displayMessage("Das Gestrüpp ist hier zu dicht, ich komme nicht durch.$Vielleicht versuche ich es weiter rechts...");
+    GameCanvas.displayMessage("Das Gestruepp ist sehr dicht, ich kann hier nicht weiter.$Ich versuche es weiter rechts...");
 });
 world.createRectangle(185,-70,15,200,true,function(){
-    GameCanvas.displayMessage("Das Gestrüpp ist hier zu dicht, ich komme nicht durch.$Vielleicht versuche ich es weiter rechts...");
+    GameCanvas.displayMessage("Das Gestruepp ist hier zu dicht, ich komme nicht durch.$Vielleicht versuche ich es weiter rechts...");
 });
 //In My Way
 world.createRectangle(-130,-70,30,200,true,function(){
@@ -65,10 +65,10 @@ world.createRectangle(-130,-70,30,200,true,function(){
 });
 //Go Left
 world.createRectangle(-130,130,250,30,true,function(){
-    GameCanvas.displayMessage("Ich kann nicht durch diese dichten Sträucher.$Aber nach links ist der Boden etwas abschüssig...");
+    GameCanvas.displayMessage("Ich kann hier nicht durch die dichten Straeucher.$Aber links ist der Boden etwas abschuessig...");
 });
 world.createRectangle(-100,100,100,30,true,function(){
-    GameCanvas.displayMessage("Ich kann nicht durch diese dichten Sträucher.$Aber nach links  ist der Boden etwas abschüssig...");
+    GameCanvas.displayMessage("Ich kann nicht durch diese dichten Straeucher.$Aber nach links  ist der Boden etwas abschuessig...");
 });
 
 //Fire
