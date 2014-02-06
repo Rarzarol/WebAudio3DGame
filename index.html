@@ -6,6 +6,8 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
+	<div id="controls"></div>
+
 	<input id="XoffsetSlider"type="range" min="-2000" max="2000" step="1" onchange="changeXOffset(this.value)">XOffset</input>
 	<input id="YoffsetSlider"type="range" min="-2000" max="2000" step="1" onchange="changeYOffset(this.value)">YOffset</input>
 	<button id="saveLevelButton" onclick="Debug.levelToString()">Save level</button>
@@ -13,7 +15,6 @@
 	<canvas class="myClass" id="pointerLock" width="64" height="64"></canvas>
     <canvas class="myClass" id="gameCanvas" width="800" height="600"></canvas>
 
-	<div id="controls"></div>
 
 	<!-- <script type="text/javascript" src="js/socket.io.js"></script>
 	<script type="text/javascript" src="js/socket.js"></script> -->
@@ -33,7 +34,7 @@
 	<script type="text/javascript" src="js/PlayerNode.js"></script>
 	<script type="text/javascript" src="js/World.js"></script>
 	<script type="text/javascript" src="js/Rectangle.js"></script>
-	<script type="text/javascript" src="js/canvas.js"></script>
+	<script type="text/javascript" src="js/canvas.js"></script>	
 	<script type="text/javascript" src="js/main_loop.js"></script>
 	<script type="text/javascript" src="js/debug.js"></script>
 	<script type="text/javascript" src="js/keylistener.js"></script>
