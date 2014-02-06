@@ -11,13 +11,13 @@ var reverb = new Reverb('/sounds/rev_saintsilvain.wav',masterGain,0.1);
 
 //Pseude Atmo first Room
 //Generates Crash @ Wolf
-//world.createAudioNode(65,-5,0,1,0,1,'/new_sounds/mainatmo1.ogg');
+world.createAudioNode(65,-5,0,1,0,1,'/new_sounds/mainatmo1.ogg');
 //Fire
 world.createAudioNode(65,-5,0,1,0,1,'/new_sounds/fire1.ogg');
 //Crickets
-world.createAudioNode(-120,0,-90,1,0,1,'/cricket_sounds/cricket1.ogg');
+/*world.createAudioNode(-120,0,-90,1,0,1,'/cricket_sounds/cricket1.ogg');
 world.createAudioNode(200,0,-90,1,0,1,'/cricket_sounds/cricket2.ogg');
-world.createAudioNode(0,0,130,1,0,1,'/cricket_sounds/cricket3.ogg');
+world.createAudioNode(0,0,130,1,0,1,'/cricket_sounds/cricket3.ogg');*/
 
 
 
@@ -51,13 +51,13 @@ world.createRectangle(-10,-10,20,20,false);
 //Top Left first Cage
 //Go Right
 world.createRectangle(-130,-100,330,30,true,function(){
-    GameCanvas.displayMessage("Das Gestrüpp ist hier zu dicht, ich komme nicht durch.$Vielleicht versuche ich es weiter rechts...");
+    GameCanvas.displayMessage("Das Gestrï¿½pp ist hier zu dicht, ich komme nicht durch.$Vielleicht versuche ich es weiter rechts...");
 });
 world.createRectangle(-100,-70,70,30,true,function(){
-    GameCanvas.displayMessage("Das Gestrüpp ist hier zu dicht, ich komme nicht durch.$Vielleicht versuche ich es weiter rechts...");
+    GameCanvas.displayMessage("Das Gestrï¿½pp ist hier zu dicht, ich komme nicht durch.$Vielleicht versuche ich es weiter rechts...");
 });
 world.createRectangle(185,-70,15,200,true,function(){
-    GameCanvas.displayMessage("Das Gestrüpp ist hier zu dicht, ich komme nicht durch.$Vielleicht versuche ich es weiter rechts...");
+    GameCanvas.displayMessage("Das Gestrï¿½pp ist hier zu dicht, ich komme nicht durch.$Vielleicht versuche ich es weiter rechts...");
 });
 //In My Way
 world.createRectangle(-130,-70,30,200,true,function(){
@@ -65,16 +65,16 @@ world.createRectangle(-130,-70,30,200,true,function(){
 });
 //Go Left
 world.createRectangle(-130,130,250,30,true,function(){
-    GameCanvas.displayMessage("Ich kann nicht durch diese dichten Sträucher.$Aber nach links ist der Boden etwas abschüssig...");
+    GameCanvas.displayMessage("Ich kann nicht durch diese dichten Strï¿½ucher.$Aber nach links ist der Boden etwas abschï¿½ssig...");
 });
 world.createRectangle(-100,100,100,30,true,function(){
-    GameCanvas.displayMessage("Ich kann nicht durch diese dichten Sträucher.$Aber nach links  ist der Boden etwas abschüssig...");
+    GameCanvas.displayMessage("Ich kann nicht durch diese dichten Strï¿½ucher.$Aber nach links  ist der Boden etwas abschï¿½ssig...");
 });
 
 //Fire
 //hier war WoodSound
 world.createRectangle(50,-15,30,30,true,function(){
-    GameCanvas.displayMessage("Was ist das? Hier brennt etwas. Ich spüre die Hitze$und höre das Feuer. Ich kann nicht näher ran gehen...")
+    GameCanvas.displayMessage("Was ist das? Hier brennt etwas. Ich spï¿½re die Hitze$und hï¿½re das Feuer. Ich kann nicht nï¿½her ran gehen...")
 });
 //Pass to next Allee-Bay
 world.createRectangle(120,145,80,15, false,function(){
@@ -87,15 +87,15 @@ world.createRectangle(120,130,80,15, false,function(){
 });
 //Allee
 world.createRectangle(200,-100,30,610,true,function(){
-	GameCanvas.displayMessage("Bäume rauschen links und rechts von mir...$Eine Allee?");
+	GameCanvas.displayMessage("Bï¿½ume rauschen links und rechts von mir...$Eine Allee?");
 });
 world.createRectangle(90,160,30,350,true,function(){
-	GameCanvas.displayMessage("Bäume rauschen auf beiden Seiten...$Ist das eine Allee?");
+	GameCanvas.displayMessage("Bï¿½ume rauschen auf beiden Seiten...$Ist das eine Allee?");
 });
 //Pass to next Town-Bay
 world.createRectangle(120,525,80,15,false,function(){
     world.localPlayer.changeGroundType(GroundTypes.NORMAL);
-	GameCanvas.displayMessage("Der Boden ist wieder anders.$Ich höre einen Kirchturm...");
+	GameCanvas.displayMessage("Der Boden ist wieder anders.$Ich hï¿½re einen Kirchturm...");
 });
 //Reverse to last Allee-Bay
 world.createRectangle(120,510,80,15,false,function(){
@@ -109,7 +109,7 @@ world.createRectangle(200,510,250,30,true,function(){
 	GameCanvas.displayMessage("Eine steinige, kalte Mauer...");
 });
 world.createRectangle(-130,540,30,550,true,function(){
-	GameCanvas.displayMessage("Eine kalte Mauer aus Stein...$Hier führt kein Weg entlang.");
+	GameCanvas.displayMessage("Eine kalte Mauer aus Stein...$Hier fï¿½hrt kein Weg entlang.");
 });
 world.createRectangle(420,540,30,350,true,function(){
 	GameCanvas.displayMessage("Eine kalte Steinmauer...$Ich muss einen anderen Weg finden.");
@@ -120,7 +120,7 @@ world.createRectangle(-70,570,160,140,true,function(){
 });
 //Shop
 world.createRectangle(220,540,200,150,true,function(){
-	GameCanvas.displayMessage("Hier ist ein Gebäude.$Es hat große Fensterscheiben, vielleicht Schaufenster?");
+	GameCanvas.displayMessage("Hier ist ein Gebï¿½ude.$Es hat groï¿½e Fensterscheiben, vielleicht Schaufenster?");
 });
 //MarketPlace
 world.createRectangle(30,710,280,150,false,function(){
@@ -136,16 +136,16 @@ world.createRectangle(150,900,140,140,true,function(){
 });
 //Well
 world.createRectangle(350,960,30,30,true,function(){
-	GameCanvas.displayMessage("Steinig, rund, ich höre Wasser...");
+	GameCanvas.displayMessage("Steinig, rund, ich hï¿½re Wasser...");
 });
 //Lower Walls of Town
 world.createRectangle(-130,1090,580,30,true,function(){
-GameCanvas.displayMessage("Noch eine Steinmauer.$Ich höre die Kirchturm Glocke hier lauter.");
+GameCanvas.displayMessage("Noch eine Steinmauer.$Ich hï¿½re die Kirchturm Glocke hier lauter.");
 });
 //Pass to next Farm-Bay
 world.createRectangle(435,890,15,200,false,function(){
     world.localPlayer.changeGroundType(GroundTypes.GRASS);
-GameCanvas.displayMessage("Der Boden hat sich wieder verändert...$Es ist auch ein anderer Geruch in der Luft.");
+GameCanvas.displayMessage("Der Boden hat sich wieder verï¿½ndert...$Es ist auch ein anderer Geruch in der Luft.");
 });
 //Reverse to last Town-Bay
 world.createRectangle(420,890,15,200,false,function(){
@@ -153,7 +153,7 @@ world.createRectangle(420,890,15,200,false,function(){
 });
 //Upper Farm Boundarys
 world.createRectangle(450,860,330,30,true,function(){
-GameCanvas.displayMessage("Ein verstärkter Zaun. Mit diesem Boden zusammen$könnten hier Tiere gehalten werden. Wo bin ich hier...");
+GameCanvas.displayMessage("Ein verstï¿½rkter Zaun. Mit diesem Boden zusammen$kï¿½nnten hier Tiere gehalten werden. Wo bin ich hier...");
 });
 
 world.createRectangle(750,890,30,350,true,function(){
@@ -165,26 +165,26 @@ GameCanvas.displayMessage("Klingt, und riecht wie ein Stall...$Die Tiere sind un
 });
 //ChickenCoop
 world.createRectangle(675,1090,75,150,true,function(){
-GameCanvas.displayMessage("Engmaschiger Zaun... Ein Hühnerstall.$Aber ich höre keine Hühner...?!$Hüüüüüüühner, Putt, Putt, Putt!");
+GameCanvas.displayMessage("Engmaschiger Zaun... Ein Hï¿½hnerstall.$Aber ich hï¿½re keine Hï¿½hner...?!$Hï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½hner, Putt, Putt, Putt!");
 });
 //Lower Farm Boundarys
 world.createRectangle(350,1240,430,30,true,function(){
-GameCanvas.displayMessage("Wieder Steinmauern, diesmal aber noch kälter.$Was rauscht denn hier so seltsam...");
+GameCanvas.displayMessage("Wieder Steinmauern, diesmal aber noch kï¿½lter.$Was rauscht denn hier so seltsam...");
 });
 world.createRectangle(350,1120,30,30,true,function(){
-GameCanvas.displayMessage("Mehr Steinmauern, diesmal aber noch kälter.$Ich höre etwas rauschen...");
+GameCanvas.displayMessage("Mehr Steinmauern, diesmal aber noch kï¿½lter.$Ich hï¿½re etwas rauschen...");
 });
 //Exit Farm
 
 //Pass to next Wood-Bay
 world.createRectangle(350,1150,15,90,false,function(){
     world.localPlayer.changeGroundType(GroundTypes.GRASS);
-GameCanvas.displayMessage("Ich fühle festen Waldboden unter meinen Füßen.$Hier scheint ein Weg zu beginnen,$ aber ich verlasse wohl das Dorf...");
+GameCanvas.displayMessage("Ich fï¿½hle festen Waldboden unter meinen Fï¿½ï¿½en.$Hier scheint ein Weg zu beginnen,$ aber ich verlasse wohl das Dorf...");
 });
 //Reverse to last Farm-Bay
 world.createRectangle(365,1150,15,90,false,function(){
     world.localPlayer.changeGroundType(GroundTypes.NORMAL);
-	GameCanvas.displayMessage("Das Dorf scheint verlassen zu sein, aber warum $höre ich dann immernoch die Kirchturm-Glocke?!");
+	GameCanvas.displayMessage("Das Dorf scheint verlassen zu sein, aber warum $hï¿½re ich dann immernoch die Kirchturm-Glocke?!");
 });
 
 //Debug init

@@ -328,17 +328,14 @@ MyCanvas.initNodes = function() {
         recta = new displayRect(entry);
         allRects.push(recta);
     })
-}
+};
 
 MyCanvas.drawWorld = function(world) {
 	canctx.save();
 	canctx.clearRect(0, 0, canvas.width, canvas.height);
 	//0,0 Shall be in the middle, therefore translate coordinate system accordingly
 	canctx.translate((canvas.width / 2)+offsetX, (canvas.height / 2)+offsetY);
-	allRects.forEach(function(entry){
-		entry.update();
-		entry.draw();
-	});
+
 	
 	//Boundarys and Rectangles
 	var rectangles = world.rectangles;
@@ -346,6 +343,11 @@ MyCanvas.drawWorld = function(world) {
 	 for(var i=0; i<rectangles.length; i++){
 		 rectangles[i].drawRECT(canctx);
 	 }
+
+    allRects.forEach(function(entry){
+        entry.update();
+        entry.draw();
+    });
 
 	 //Movers
 	 

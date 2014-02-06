@@ -10,14 +10,14 @@ function AudioNode(x,y,z,orx,ory,orz,filename,innerConeAngle,outerConeAngle,refD
 	this.panner   = context.createPanner();
 
     //init panner
-    this.panner.coneGain = innerConeGain;
-    this.panner.coneOuterGain = outerConeGain;
-    this.panner.refDistance = refDistance;
-    this.panner.maxDistance = maxDistance;
-    this.panner.coneInnerAngle = innerConeAngle;
-    this.panner.coneOuterAngle = outerConeAngle;
-    this.panner.distanceModel = distanceModel;
-    this.panner.rolloffFactor = rolloff;
+    this.panner.coneGain = (innerConeGain == undefined) ? 1 : innerConeGain ;
+    this.panner.coneOuterGain = (outerConeGain == undefined) ? 1: outerConeGain;
+    this.panner.refDistance = (refDistance == undefined) ? 1 : refDistance;
+    this.panner.maxDistance = (maxDistance == undefined) ? 10000 : maxDistance ;
+    this.panner.coneInnerAngle = (innerConeAngle == undefined) ? 360 : innerConeAngle;
+    this.panner.coneOuterAngle = (outerConeAngle == undefined) ? 360 : outerConeAngle;
+    this.panner.distanceModel = (distanceModel == undefined) ? this.panner.LINEAR_DISTANCE : distanceModel;
+    this.panner.rolloffFactor = (rolloff == undefined) ? 1 : rolloff;
 
 	this.gainnode = context.createGainNode();
 	this.isPlaying = false;
