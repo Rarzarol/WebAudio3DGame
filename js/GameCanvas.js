@@ -18,9 +18,13 @@ GameCanvas.displayMessage = function(message) {
 };
 
 GameCanvas.draw = function(){
+    gamectx.globalAlpha = 1;
     gamectx.clearRect(0,0,gameCanvas.width,gameCanvas.height);
+    gamectx.fillStyle = 'black';
+    gamectx.fillRect(0,0,gameCanvas.width,gameCanvas.height);
+
     gamectx.font = '18pt Calibri';
-    gamectx.fillStyle = "#333333";
+    gamectx.fillStyle = "#ffffff";
     gamectx.globalAlpha = textAlpha;
     gamectx.textAlign = 'center';
 
