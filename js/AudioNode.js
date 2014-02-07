@@ -19,7 +19,7 @@ function AudioNode(x,y,z,orx,ory,orz,filename,innerConeAngle,outerConeAngle,refD
     this.panner.coneInnerAngle = (innerConeAngle == undefined) ? 360 : innerConeAngle;
     this.panner.coneOuterAngle = (outerConeAngle == undefined) ? 360 : outerConeAngle;
     this.panner.rolloffFactor = (rolloff == undefined) ? 1 : rolloff;
-	this.panner.DistanceModelType = (distanceModel == undefined) ? "linear" : distanceModel;
+	this.panner.distanceModelType = (distanceModel == undefined) ? "linear" : distanceModel;
 
 	this.gainnode = context.createGainNode();
 	this.isPlaying = false;

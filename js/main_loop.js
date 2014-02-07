@@ -14,7 +14,7 @@ document.getElementById('mainatmo').play();
 //innerConeAngle,outerConeAngle,refDistance,maxDistance,rolloff,innerConeGain,outerConeGain,distanceModel) = 8 Params
 
 //Fire
-world.createAudioNode(65,0,-5,1,0,1,'/new_sounds/fire1.ogg',360,360,1,85,1,1.0,0.85,"linear");
+world.createAudioNode(65,0,-5,1,0,1,'/new_sounds/fire1.ogg',360,360,5,645,1,5,3,"linear");
 //Crickets
 world.createAudioNode(-120,0,-90,1,0,1,"/cricket_sounds/cricket1.ogg",90,120,3,153,1,1,3,"linear");
 world.createAudioNode(200,0,-90,-1,0,1,'/cricket_sounds/cricket2.ogg',90,120,3,153,1,1,3,undefined);

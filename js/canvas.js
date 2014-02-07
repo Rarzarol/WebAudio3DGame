@@ -138,7 +138,6 @@ MyCanvas.createControlSet = function(node) {
 
 ///////////////////////////////////////////////////////////////////////////////////
 
-	
 	var opt1 = document.createElement("option"); 
 	opt1.text = 'linear';
 	distModelSelect.options.add(opt1);
@@ -151,17 +150,29 @@ MyCanvas.createControlSet = function(node) {
 	opt3.text = 'exponential';
 	distModelSelect.options.add(opt3);
 
+	if (node.panner.distanceModelType == "linear"){
+		distModelSelect.selectedIndex = 0;
+	} else if (node.panner.distanceModelType == "inverse"){
+		distModelSelect.selectedIndex = 1;
+	} else if (node.panner.distanceModelType == "exponential"){
+		distModelSelect.selectedIndex = 2;
+	}
+
 	//This always switched back to 1...
 	distModelSelect.onchange = function() {
 
-		if (this.selectedIndex = 0) {
-			node.panner.distanceModel = node.panner.LINEAR_DISTANCE;
+		var chosenOne = this.selectedIndex;
+		if (chosenOne == 0) {
+			//node.panner.distanceModelType = node.panner.LINEAR_DISTANCE;
+			node.panner.distanceModelType = "linear";
 		}
-		else if (this.selectedIndex = 1) {
-			node.panner.distanceModel = node.panner.INVERSE_DISTANCE;
+		else if (chosenOne == 1) {
+			//node.panner.distanceModelType = node.panner.INVERSE_DISTANCE;
+			node.panner.distanceModelType = "inverse";
 		}
-		else {
-			node.panner.distanceModel = node.panner.EXPONENTIAL_DISTANCE;
+		else if (chosenOne == 2) {
+			//node.panner.distanceModelType = node.panner.EXPONENTIAL_DISTANCE;
+			node.panner.distanceModelType = "exponential";
 		}
 	}
 
@@ -169,36 +180,39 @@ MyCanvas.createControlSet = function(node) {
 
 	nodeRefDistanceSlider.type = 'range';
 	nodeRefDistanceSlider.id = node.id;
-	nodeRefDistanceSlider.value = node.panner.refDistance;
 	nodeRefDistanceSlider.max = 10;
 	nodeRefDistanceSlider.min = 0;
 	nodeRefDistanceSlider.step = 0.001;
+	nodeRefDistanceSlider.value = node.panner.refDistance;
 	nodeRefDistanceSlider.onchange = function changeHandler(){
-		node.setRefDist(parseInt(this.value));
+		node.setRefDist(nodeRefDistanceSlider.value);
+		//changed from this.value, because that would be to easy and to nice to work
 	};
 
 ///////////////////////////////////////////////////////////////////////////////////
 
 	nodeMaxDistanceSlider.type 	= 'range';
 	nodeMaxDistanceSlider.id 	= node.id;
-	nodeMaxDistanceSlider.value = node.panner.maxDistance;
 	nodeMaxDistanceSlider.max 	= 10000;
 	nodeMaxDistanceSlider.min 	= 10;
 	nodeMaxDistanceSlider.step 	= 1;
+	nodeMaxDistanceSlider.value = node.panner.maxDistance;
 	nodeMaxDistanceSlider.onchange = function changeHandler(){
-		node.setMaxDist(parseInt(this.value));
+		node.setMaxDist(nodeMaxDistanceSlider.value);
+		//changed from this.value, because that would be to easy and to nice to work
 	};
 
 ///////////////////////////////////////////////////////////////////////////////////
 
 	nodeRolloffSlider.type	= 'range';
 	nodeRolloffSlider.id 	= node.id;
-	nodeRolloffSlider.value = node.panner.rolloffFactor;
 	nodeRolloffSlider.max 	= 5;
 	nodeRolloffSlider.min 	= 1;
 	nodeRolloffSlider.step 	= 0.001;
+	nodeRolloffSlider.value = node.panner.rolloffFactor;
 	nodeRolloffSlider.onchange = function changeHandler(){
-		node.setRolloff(parseInt(this.value));
+		node.setRolloff(nodeRolloffSlider.value);
+		//changed from this.value, because that would be to easy and to nice to work
 	};
 
 ///////////////////////////////////////////////////////////////////////////////////
@@ -209,9 +223,11 @@ MyCanvas.createControlSet = function(node) {
 	nodeVolumeSlider.value = node.gainnode.gain.value;
 	nodeVolumeSlider.max   = 20;
 	nodeVolumeSlider.step  = 1;
+	nodeVolumeSlider.value = node.gainnode.gain.value;
 	//Setting up VolumeSLider onchange
     nodeVolumeSlider.onchange = function changeHandler() {
-    	node.setVolume(parseInt(this.value));
+    	node.setVolume(nodeVolumeSlider.value);
+    	//changed from this.value, because that would be to easy and to nice to work
     };
 
 ///////////////////////////////////////////////////////////////////////////////////
@@ -219,15 +235,16 @@ MyCanvas.createControlSet = function(node) {
     //Setting OrientationInput attributes
     nodeOrientationInput.type  = 'number';
 	nodeOrientationInput.id	   = node.id;
-	nodeOrientationInput.value = node.degrees;
 	nodeOrientationInput.min   = 0;
 	nodeOrientationInput.max   = 360;
 	nodeOrientationInput.step  = 1;
-
+	nodeOrientationInput.value = node.degrees;
+	
 	//Setting Orientation Button
 	nodeOrientationButton.innerHTML = 'Add Degrees';
     nodeOrientationButton.onclick = function changeHandler() {
-		node.rotate(parseInt(nodeOrientationInput.value));
+		node.rotate(nodeOrientationInput.value);
+		//changed from this.value, because that would be to easy and to nice to work
     };
 
 ///////////////////////////////////////////////////////////////////////////////////
@@ -235,11 +252,11 @@ MyCanvas.createControlSet = function(node) {
     //Setting nodeInnerConeAngleInput attributes
     nodeInnerConeAngleInput.type  = 'number';
 	nodeInnerConeAngleInput.id	  = node.id;
-	nodeInnerConeAngleInput.value = node.panner.coneInnerAngle;
 	nodeInnerConeAngleInput.min   = 0;
 	nodeInnerConeAngleInput.max   = 360;
 	nodeInnerConeAngleInput.step  = 0.1;
-
+	nodeInnerConeAngleInput.value = node.panner.coneInnerAngle;
+	
 	//Setting nodeOuterConeAngleInput attributes
     nodeOuterConeAngleInput.type  = 'number';
 	nodeOuterConeAngleInput.id	  = node.id;
@@ -251,7 +268,7 @@ MyCanvas.createControlSet = function(node) {
 	//Setting nodeConeAngleButton
 	nodeConeAngleButton.innerHTML = 'Set inner/outer Cone Angle';
     nodeConeAngleButton.onclick = function changeHandler() {
-		node.setConeAngle(parseInt(nodeInnerConeAngleInput.value),parseInt(nodeOuterConeAngleInput.value));
+		node.setConeAngle(nodeInnerConeAngleInput.value,nodeOuterConeAngleInput.value);
     };
 
 ///////////////////////////////////////////////////////////////////////////////////
@@ -273,25 +290,27 @@ MyCanvas.createControlSet = function(node) {
 	//Setting ConeGain attributes
 	nodeInnerConeGainInput.type  = 'range';
 	nodeInnerConeGainInput.id	 = node.id;
-	nodeInnerConeGainInput.value = node.panner.coneGain;
 	nodeInnerConeGainInput.max   = 5;
 	nodeInnerConeGainInput.step  = 0.001;
+		nodeInnerConeGainInput.value = node.panner.coneGain;
     nodeInnerConeGainInput.onchange = function changeHandler() {
-    	node.setInnerConeGain(parseInt(this.value));
+    	node.setInnerConeGain(nodeInnerConeGainInput.value);
+    	//changed from this.value, because that would be to easy and to nice to work
     };
 
     //Setting ConeGainOuter attributes
 	nodeOuterConeGainInput.type  = 'range';
 	nodeOuterConeGainInput.id	 = node.id;
-	nodeOuterConeGainInput.value = node.panner.coneOuterGain;
 	nodeOuterConeGainInput.max   = 3;
 	nodeOuterConeGainInput.step  = 0.001;
+	nodeOuterConeGainInput.value = node.panner.coneOuterGain;
     nodeOuterConeGainInput.onchange = function changeHandler() {
-    	node.setOuterConeGain(parseInt(this.value));
+    	node.setOuterConeGain(nodeOuterConeGainInput.value);
+    	//changed from this.value, because that would be to easy and to nice to work
     };
 
-///////////////////////////////////////////////////////////////////////////////////
 
+///////////////////////////////////////////////////////////////////////////////////
     //Inserting into DOM
 	controlrow1.appendChild(nodeVolumeText);
 	controlrow1.appendChild(nodeVolumeSlider);
