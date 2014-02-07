@@ -2,7 +2,7 @@
 
 var world = new World(1000);
 
-world.createLocalPlayer(1,0,1);
+world.createLocalPlayer(1,5,1);
 
 var reverb = new Reverb('/sounds/rev_saintsilvain.wav',masterGain,0.1);
 
@@ -14,11 +14,11 @@ document.getElementById('mainatmo').play();
 //innerConeAngle,outerConeAngle,refDistance,maxDistance,rolloff,innerConeGain,outerConeGain,distanceModel) = 8 Params
 
 //Fire
-world.createAudioNode(65,0,-5,1,0,1,'/new_sounds/fire1.ogg');
+world.createAudioNode(65,0,-5,1,0,1,'/new_sounds/fire1.ogg',360,360,1,85,1,1.0,0.85,"linear");
 //Crickets
-world.createAudioNode(-120,0,-90,1,0,1,"/cricket_sounds/cricket1.ogg",90,120,1,100,undefined,0.7,0.5,"linear");
-world.createAudioNode(200,0,-90,-1,0,1,'/cricket_sounds/cricket2.ogg',90,120,undefined,undefined,undefined,0.5,0.5,undefined);
-world.createAudioNode(0,0,130,1,0,1,'/cricket_sounds/cricket3.ogg',90,120,undefined,undefined,undefined,0.5,0.5,undefined);
+world.createAudioNode(-120,0,-90,1,0,1,"/cricket_sounds/cricket1.ogg",90,120,3,153,1,1,3,"linear");
+world.createAudioNode(200,0,-90,-1,0,1,'/cricket_sounds/cricket2.ogg',90,120,3,153,1,1,3,undefined);
+world.createAudioNode(0,0,130,1,0,1,'/cricket_sounds/cricket3.ogg',90,120,undefined,undefined,undefined,0.5,0.5,"inverse");
 
 //Trees 1 and 2 (left side)
 world.createAudioNode(70,0,400,1,0,1,'/new_sounds/tree1.ogg',undefined,undefined,undefined,undefined,undefined,0.5,0.5,undefined);

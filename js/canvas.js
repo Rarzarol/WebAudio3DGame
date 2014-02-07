@@ -138,6 +138,20 @@ MyCanvas.createControlSet = function(node) {
 
 ///////////////////////////////////////////////////////////////////////////////////
 
+	
+	var opt1 = document.createElement("option"); 
+	opt1.text = 'linear';
+	distModelSelect.options.add(opt1);
+
+	var opt2 = document.createElement("option"); 
+	opt2.text = 'inverse';
+	distModelSelect.options.add(opt2);
+
+	var opt3 = document.createElement("option"); 
+	opt3.text = 'exponential';
+	distModelSelect.options.add(opt3);
+
+	//This always switched back to 1...
 	distModelSelect.onchange = function() {
 
 		if (this.selectedIndex = 0) {
@@ -150,18 +164,6 @@ MyCanvas.createControlSet = function(node) {
 			node.panner.distanceModel = node.panner.EXPONENTIAL_DISTANCE;
 		}
 	}
-
-	var opt1 = document.createElement("option"); 
-	opt1.text = 'linear';
-	distModelSelect.options.add(opt1);
-
-	var opt2 = document.createElement("option"); 
-	opt2.text = 'inverse';
-	distModelSelect.options.add(opt2);
-
-	var opt3 = document.createElement("option"); 
-	opt3.text = 'exponential';
-	distModelSelect.options.add(opt3);
 
 ///////////////////////////////////////////////////////////////////////////////////
 
