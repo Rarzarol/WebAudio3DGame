@@ -88,7 +88,9 @@ Debug.levelToString = function(){
                                                 +node.panner.rolloffFactor+","
                                                 +node.panner.coneGain+","
                                                 +node.panner.coneOuterGain+","
-                                                + '"' + node.panner.distanceModelType + '"' +");");
+                                                + '"' + node.panner.distanceModelType + '"' + ","
+                                                +node.gainnode.gain.value
+                                                +");");
 	});
 	
 	//Get all Rectangles

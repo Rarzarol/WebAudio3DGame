@@ -5,10 +5,22 @@ function PlayerSound(parent){
     this.nextFootstep = 0;
     this.timeOfLastFootstep = 0;
 
-    var wood = new WX.Sampler({ source:"new_sounds/wood2.ogg" });
+    var wood = new WX.Sampler({ source:"new_sounds/woodcollide1.wav" });
     wood.gain = 1;
     WX.link(wood,WX.DAC);
-
+	
+	var fire = new WX.Sampler({ source:"new_sounds/firecollide1.wav" });
+    fire.gain = 1;
+    WX.link(fire,WX.DAC);
+	
+	var stone = new WX.Sampler({ source:"new_sounds/stonecollide1.wav" });
+	stone.gain = 1;
+	WX.link(stone,WX.DAC);
+	
+	var fence = new WX.Sampler({ source:"new_sounds/fencecollide1.wav" });
+	fence.gain = 1;
+	WX.link(fence,WX.DAC);
+	
     this.normalFootSteps = new Array();
     this.grassFootSteps = new Array();
     this.hiGrassFootSteps = new Array();
@@ -39,13 +51,11 @@ function PlayerSound(parent){
 
     this.footstep = function(){
         //Randomize next step
-        var timeDiff = context.currentTime - this.timeOfLastFootstep;
-        if(timeDiff >= 0.6){
+        if(context.currentTime - this.timeOfLastFootstep >= 0.6){
             if(parent.currentGround == GroundTypes.NORMAL){
                 this.normalFootSteps[this.nextFootstep].noteOn(60);
             }
             else if(parent.currentGround == GroundTypes.GRASS){
-
                 this.grassFootSteps[this.nextFootstep].noteOn(60);
             }
             else if(parent.currentGround == GroundTypes.GRAVEL){
@@ -56,19 +66,26 @@ function PlayerSound(parent){
             }
             this.nextFootstep = Math.floor(Math.random() * (NUMBER_OF_FOOTSTEP_FILES-1));
             this.timeOfLastFootstep = context.currentTime;
+
+            console.log("next footstep:"+this.nextFootstep);
         }
     };
 
-    this.collideStone = function(){
 
+
+    this.collideStone = function(){
+		stone.noteOn(60);
     }
 
     this.collideFence = function(){
-
+		fence.noteOn(60);
     }
 
     this.collideWood = function(){
         wood.noteOn(60);
+    }
+	this.collideFire = function(){
+        fire.noteOn(60);
     }
 }
 

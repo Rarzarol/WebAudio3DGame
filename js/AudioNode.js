@@ -1,4 +1,5 @@
-function AudioNode(x,y,z,orx,ory,orz,filename,innerConeAngle,outerConeAngle,refDistance,maxDistance,rolloff,innerConeGain,outerConeGain,distanceModel){
+function AudioNode(x,y,z,orx,ory,orz,filename,innerConeAngle,outerConeAngle,refDistance,maxDistance,rolloff,innerConeGain,outerConeGain,distanceModel,gain){
+
 
     this.position = new Point(x,y,z);
 	this.orientation = new Vector(orx,ory,orz);
@@ -6,7 +7,7 @@ function AudioNode(x,y,z,orx,ory,orz,filename,innerConeAngle,outerConeAngle,refD
 	this.audioBuffer = null;
 	this.source;
 	this.currentRotation = 0;
-	this.volume = 10;
+	gain == undefined ? this.volume = 1 : this.volume = gain;
 	this.panner   = context.createPanner();
 
     //init panner
@@ -47,7 +48,7 @@ function AudioNode(x,y,z,orx,ory,orz,filename,innerConeAngle,outerConeAngle,refD
 		this.source.loop = true;
 		this.source.connect(this.panner);
 		this.panner.connect(this.gainnode);
-		this.gainnode.gain.setValueAtTime(1,context.currentTime);
+		romanMode == true ? this.gainnode.gain.setValueAtTime(this.volume,context.currentTime) : this.gainnode.gain.setValueAtTime(1,context.currentTime);
 		GlobalAudio.connectToMasterGain(this.gainnode);
 		this.isPlaying = true;
         this.source.start(context.currentTime);

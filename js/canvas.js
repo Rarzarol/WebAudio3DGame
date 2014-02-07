@@ -228,7 +228,7 @@ MyCanvas.createControlSet = function(node) {
 	nodeVolumeSlider.type  = 'range';
 	nodeVolumeSlider.id	   = node.id;
 	nodeVolumeSlider.value = node.gainnode.gain.value;
-	nodeVolumeSlider.max   = 20;
+	nodeVolumeSlider.max   = 100;
 	nodeVolumeSlider.step  = 1;
 	nodeVolumeSlider.value = node.gainnode.gain.value;
 	//Setting up VolumeSLider onchange
