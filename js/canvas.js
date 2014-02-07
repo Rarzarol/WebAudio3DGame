@@ -1,9 +1,16 @@
+var DEBUG = true;
+
 var canvas = document.getElementById('myCanvas');
 var canctx = canvas.getContext('2d');
 var allRects = new Array();
 var textpos  = 20;
 var savedText = "Pick a Node to change Params";
 
+if(DEBUG == false){
+    canvas.style.display='none';
+    var firstRow = document.getElementById('firstRow');
+    firstRow.style.display = 'none';
+}
 var offsetX = 0;
 var offsetY = 0;
 
@@ -375,6 +382,10 @@ MyCanvas.drawWorld = function(world) {
 	
 	canctx.restore();
 	MyCanvas.writeMessage();
+        canctx.font = '18pt Calibri';
+        canctx.fillStyle = 'black';
+        canctx.fillText("TimeDiffSinceFootstep"+Number(context.currentTime), 200, 200);
+
 }
 
 //Class describing Rectangle on Canvas

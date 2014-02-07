@@ -6,7 +6,7 @@ var gamectx = gameCanvas.getContext('2d');
 var currentText = "";
 var textAlpha = 1;
 var textArray = {};
-var TEXT_SPACING = 24;
+var TEXT_SPACING = 42;
 
 function GameCanvas(){
 }
@@ -18,12 +18,16 @@ GameCanvas.displayMessage = function(message) {
 };
 
 GameCanvas.draw = function(){
+    if(DEBUG == false){
+        gamectx.canvas.width  = window.innerWidth;
+        gamectx.canvas.height = window.innerHeight;
+    }
     gamectx.globalAlpha = 1;
     gamectx.clearRect(0,0,gameCanvas.width,gameCanvas.height);
     gamectx.fillStyle = 'black';
     gamectx.fillRect(0,0,gameCanvas.width,gameCanvas.height);
 
-    gamectx.font = '18pt Calibri';
+    gamectx.font = '32pt DejaVu Sans';
     gamectx.fillStyle = "#ffffff";
     gamectx.globalAlpha = textAlpha;
     gamectx.textAlign = 'center';

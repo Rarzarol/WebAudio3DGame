@@ -21,7 +21,7 @@ function PlayerSound(parent){
         var hiGrassSample = new WX.Sampler( { source:"footstep_sounds/playerStepHiGrass"+Number(i+1)+".ogg" } );
         var leavesSample = new WX.Sampler( { source:"footstep_sounds/playerStepLeaves"+Number(i+1)+".ogg" } );
         sample.gain = 1;
-        grassSample.gain = 1;
+        grassSample.gain = 0.3;
         gravelSample.gain = 1;
         hiGrassSample.gain = 1;
         leavesSample.gain = 1;
@@ -39,11 +39,13 @@ function PlayerSound(parent){
 
     this.footstep = function(){
         //Randomize next step
-        if(context.currentTime - this.timeOfLastFootstep >= 0.6){
+        var timeDiff = context.currentTime - this.timeOfLastFootstep;
+        if(timeDiff >= 0.6){
             if(parent.currentGround == GroundTypes.NORMAL){
                 this.normalFootSteps[this.nextFootstep].noteOn(60);
             }
             else if(parent.currentGround == GroundTypes.GRASS){
+
                 this.grassFootSteps[this.nextFootstep].noteOn(60);
             }
             else if(parent.currentGround == GroundTypes.GRAVEL){
@@ -54,12 +56,8 @@ function PlayerSound(parent){
             }
             this.nextFootstep = Math.floor(Math.random() * (NUMBER_OF_FOOTSTEP_FILES-1));
             this.timeOfLastFootstep = context.currentTime;
-
-            console.log("next footstep:"+this.nextFootstep);
         }
     };
-
-
 
     this.collideStone = function(){
 
