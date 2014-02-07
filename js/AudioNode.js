@@ -10,14 +10,16 @@ function AudioNode(x,y,z,orx,ory,orz,filename,innerConeAngle,outerConeAngle,refD
 	this.panner   = context.createPanner();
 
     //init panner
+    //this.panner.panningModel = "HRTF";
+
     this.panner.coneGain = (innerConeGain == undefined) ? 1 : innerConeGain ;
-    this.panner.coneOuterGain = (outerConeGain == undefined) ? 1: outerConeGain;
+    this.panner.coneOuterGain = (outerConeGain == undefined) ? 1 : outerConeGain;
     this.panner.refDistance = (refDistance == undefined) ? 1 : refDistance;
     this.panner.maxDistance = (maxDistance == undefined) ? 10000 : maxDistance ;
     this.panner.coneInnerAngle = (innerConeAngle == undefined) ? 360 : innerConeAngle;
     this.panner.coneOuterAngle = (outerConeAngle == undefined) ? 360 : outerConeAngle;
-    this.panner.distanceModel = (distanceModel == undefined) ? this.panner.LINEAR_DISTANCE : distanceModel;
     this.panner.rolloffFactor = (rolloff == undefined) ? 1 : rolloff;
+	this.panner.distanceModelType = (distanceModel == undefined) ? "linear" : distanceModel;
 
 	this.gainnode = context.createGainNode();
 	this.isPlaying = false;
@@ -45,7 +47,7 @@ function AudioNode(x,y,z,orx,ory,orz,filename,innerConeAngle,outerConeAngle,refD
 		this.source.loop = true;
 		this.source.connect(this.panner);
 		this.panner.connect(this.gainnode);
-		this.gainnode.gain.setValueAtTime(10,context.currentTime);
+		this.gainnode.gain.setValueAtTime(1,context.currentTime);
 		GlobalAudio.connectToMasterGain(this.gainnode);
 		this.isPlaying = true;
         this.source.start(context.currentTime);

@@ -76,3 +76,18 @@ Abbau: Sonntag 20 Uhr - Roman & Wolf
 PC: Ubuntu (newest)
 User: Student (hier Admin)
 pw: Ben
+
+
+>>>>>>>>>>>>>>>>>>>
+
+für end abgabe:
+Code commentieten!!
+in HTML mit <!-- Kommentar -->
+sonst inline mit // Kommentar
+
+am anfang authoren datum, projekt details etc.
+bei code den wir von wo anders haben, kommentieren wo her etc.
+so das er es nachvollziehen kann, und wir auch noch nach ein paar jahren
+gewisse Lesbarkeit bitte!
+
+1-2 Seiten erklärung, wir sollten/können, nehmen von unserern Zeichen für Hochschultage.
