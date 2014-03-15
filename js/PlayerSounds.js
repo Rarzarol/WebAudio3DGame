@@ -6,20 +6,28 @@ function PlayerSound(parent){
     this.timeOfLastFootstep = 0;
 
     var wood = new WX.Sampler({ source:"new_sounds/woodcollide1.wav" });
-    wood.gain = 1;
+    wood.gain = 0.5;
     WX.link(wood,WX.DAC);
 	
 	var fire = new WX.Sampler({ source:"new_sounds/firecollide1.wav" });
-    fire.gain = 1;
+    fire.gain = 0.5;
     WX.link(fire,WX.DAC);
 	
 	var stone = new WX.Sampler({ source:"new_sounds/stonecollide1.wav" });
-	stone.gain = 1;
+	stone.gain = 0.5;
 	WX.link(stone,WX.DAC);
 	
 	var fence = new WX.Sampler({ source:"new_sounds/fencecollide1.wav" });
-	fence.gain = 1;
+	fence.gain = 0.5;
 	WX.link(fence,WX.DAC);
+
+    var bush = new WX.Sampler({ source:"new_sounds/bushcollide1.wav" });
+    bush.gain = 0.5;
+    WX.link(bush,WX.DAC);
+
+    var window = new WX.Sampler({ source:"new_sounds/windowcollide1.wav" });
+    window.gain = 1;
+    WX.link(window,WX.DAC);
 	
     this.normalFootSteps = new Array();
     this.grassFootSteps = new Array();
@@ -86,6 +94,12 @@ function PlayerSound(parent){
     }
 	this.collideFire = function(){
         fire.noteOn(60);
+    }
+    this.collideBush = function(){
+        bush.noteOn(60);
+    }
+    this.collideWindow = function(){
+        window.noteOn(60);
     }
 }
 

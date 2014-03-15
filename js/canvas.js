@@ -1,4 +1,4 @@
-var DEBUG = true;
+var DEBUG = false;
 
 var canvas = document.getElementById('myCanvas');
 var canctx = canvas.getContext('2d');

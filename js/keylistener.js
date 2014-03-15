@@ -30,7 +30,19 @@ window.addEventListener('keyup', function (e) {
     if (e.keyCode === 87) { input.wDown = false; }
     //s
     if (e.keyCode === 83) { input.sDown = false; }
-},false);
+
+    //TODO: test arrow keys
+
+    //d
+    if (e.keyCode === 39) { input.dDown = false; }
+    //a
+    if (e.keyCode === 37) { input.aDown = false; }
+    //w
+    if (e.keyCode === 38) { input.wDown = false; }
+    //s
+    if (e.keyCode === 40) { input.sDown = false; }
+
+}, false);
 
 /////////////////////////////////////////////////////////////////////
 // Mouse Capture Code

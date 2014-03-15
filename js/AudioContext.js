@@ -7,7 +7,7 @@ var context    = new window.webkitAudioContext;
 var masterGain = context.createGain();
 masterGain.connect(context.destination);
 //TODO: SCALE ACCORDING TO SYSTEM SHENANIGANS
-masterGain.gain.setValueAtTime(1,context.currentTime);
+masterGain.gain.setValueAtTime(2,context.currentTime);
 
 //Static methods for global audio access
 function GlobalAudio(){
